@@ -84,7 +84,7 @@ public class NetworkPlayer : MonoBehaviour
         avatar.layer = 9;
         playerAvatar = avatar;
         playerAvatar.GetComponent<PlayerStats>().networkPlayer = this;
-
+        if(PhotonNetwork.IsMasterClient) Debug.Log("Owner");
         avatarSpawned = true;
 
         pressRtoSpawnText.SetActive(false);

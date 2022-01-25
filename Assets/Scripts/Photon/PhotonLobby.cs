@@ -128,6 +128,7 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
         PhotonNetwork.NickName = playername;
         earlyLobbyGO.SetActive(false);
         lobbyGO.SetActive(true);
+        
     }
 
     // Update is called once per frame
