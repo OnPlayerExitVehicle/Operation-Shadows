@@ -66,7 +66,7 @@ public class PlayerStats : MonoBehaviour
         Debug.Log(this.gameObject + " öldü");
         healthText.text = Health.ToString();
         SetDeathOnNetworkPlayer();
-        SetScore();
+        //SetScore();
         GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(7).GetComponent<BuyMenu>().CloseBuy();
         if (PV.IsMine)
             SilahAt();

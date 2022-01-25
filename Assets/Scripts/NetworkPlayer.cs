@@ -69,12 +69,13 @@ public class NetworkPlayer : MonoBehaviour
     private void SpawnPlayerAvatarAndCamSet()
     {
         GameObject avatar;
-        if ((int)PhotonNetwork.LocalPlayer.CustomProperties["Team"] == 0)
+        //if ((int)PhotonNetwork.LocalPlayer.CustomProperties["Team"] == 0)
             avatar = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Player0"), 
                 GameSetup.GS.team0SpawnPoints[Random.Range(0, GameSetup.GS.team0SpawnPoints.Length)].position, Quaternion.identity, 0);
-        else
+        /*else
             avatar = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Player1"), 
                 GameSetup.GS.team1SpawnPoints[Random.Range(0, GameSetup.GS.team1SpawnPoints.Length)].position, Quaternion.identity, 0);
+        */
         GameObject mainCam = GameObject.FindGameObjectWithTag("MainCamera");
         Transform camHolder = mainCam.transform.parent;
         camHolder.parent = avatar.transform;
@@ -89,7 +90,7 @@ public class NetworkPlayer : MonoBehaviour
 
         pressRtoSpawnText.SetActive(false);
 
-        SpawnGun("pistol");
+        SpawnGun("ak47");
     }
     public void SpawnGun(string whichGun)
     {

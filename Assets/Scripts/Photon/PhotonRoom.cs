@@ -93,14 +93,14 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
         if (PhotonNetwork.IsMasterClient)
         {
             startButton.SetActive(true);
-            roundsUI.SetActive(true);
+            //roundsUI.SetActive(true);
         }
         else
         {
             startButton.SetActive(false);
             roundsUI.SetActive(false);
         }
-        SetPlayersTeams(0);
+        //SetPlayersTeams(0);
         ClearPlayerListings();
         ListPlayers();
 
@@ -124,7 +124,7 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
                 Text tempText = tempListing.transform.GetChild(0).GetComponent<Text>();
                 Image tempTeam = tempListing.transform.GetChild(1).GetComponent<Image>();
                 tempText.text = player.NickName;
-                if (player.CustomProperties.ContainsKey("Team"))
+                /*if (player.CustomProperties.ContainsKey("Team"))
                 {
                     int team = (int)player.CustomProperties["Team"];
                     if (team == 0)
@@ -132,7 +132,7 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
                     else
                         tempTeam.color = Color.blue;
 
-                }
+                }*/
             }
         }
     }
