@@ -7,7 +7,7 @@ enum NPCState
 {
     Patrol, Chasing, Shooting
 }
-
+[RequireComponent(typeof(NavMeshAgent))]
 public class AI : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent navMeshAgent;
@@ -15,17 +15,30 @@ public class AI : MonoBehaviour
 
     [SerializeField] private NPCState state;
     [SerializeField] private float viewAngle;
-    [SerializeField] private float awaranessRadius;
+    [SerializeField] private float awarenessRadius;
     [SerializeField] private float shootRadius;
+    [SerializeField] private Transform? target;
+    [SerializeField] private Vector3[] positions;
+    [SerializeField] int positionCounter;
+    [SerializeField] float patrolCheckRadius = 0.1f;
 
+    public GameObject asdas;
+
+    private void Awake()
+    {
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        positionCounter = 1;
+    }
 
     private void Start()
     {
         state = NPCState.Patrol;
+        //navMeshAgent.SetDestination(positions[1]);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
+        //Debug.Log(transform.forward.z);
         switch(state)
         {
             
@@ -43,12 +56,51 @@ public class AI : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        
+        Gizmos.DrawSphere(transform.position, awarenessRadius);
+        //Gizmos.DrawSphere(transform.position, shootRadius);
     }
 
     private void ProcessPatrol()
     {
+        //SetPatrolPath();
+        CheckForEnemies(awarenessRadius);
+    }
 
+    private void SetPatrolPath()
+    {
+        int length = positions.Length;
+        if(navMeshAgent.remainingDistance < 0.01f)
+        {
+            positionCounter++;
+            positionCounter %= length;
+            navMeshAgent.SetDestination(positions[positionCounter]);
+        }
+    }
+
+    private void CheckForEnemies(float radius)
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
+        if (colliders.Length > 0)
+        {
+            for(int i = 0; i < colliders.Length; i++)
+            {
+                if(colliders[i].CompareTag("Player"))
+                {
+                    RaycastHit hit;
+                    
+                    if (Physics.Linecast(transform.position, colliders[i].transform.position, out hit))
+                    {
+                        asdas = hit.collider.gameObject;
+                        if (hit.collider.gameObject.CompareTag("Player"))
+                        {
+                            float angle = Vector3.Angle(transform.position, hit.transform.position);
+                            state = NPCState.Chasing;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private void ProcessChasing()
