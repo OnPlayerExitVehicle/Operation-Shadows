@@ -18,9 +18,14 @@ public class TPSController : MonoBehaviour
     }
     private void Update()
     {
-        //ProcessInput();
-        //ProcessCameraRotation();
+        ProcessInput();
+        ProcessCameraRotation();
+        Fix();
+    }
 
+    private void Fix()
+    {
+        
     }
 
     private void ProcessInput()

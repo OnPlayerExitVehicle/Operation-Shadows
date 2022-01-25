@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class TPSRotation : MonoBehaviour
 {
@@ -8,29 +9,61 @@ public class TPSRotation : MonoBehaviour
     [SerializeField] private float lerp;
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float time;
+    [SerializeField] private float duration;
     private bool started = false;
 
     private Vector3 angles;
+    private Tween? tween;
+
+    private float inputX;
+    private float inputY;
 
     private void Update()
     {
-       if(Input.GetKey(KeyCode.W) && !started)
+        inputX = Input.GetAxis("Horizontal");
+        inputY = Input.GetAxis("Vertical");
+        Debug.Log(inputY);
+        /*
+       if(Input.GetKey(KeyCode.W))
         {
-            //Debug.Log(transform.rotation.y - followObject.rotation.y);
-            if(Mathf.Abs(transform.rotation.eulerAngles.y - followObject.rotation.eulerAngles.y) > 1f ||true)
-            {
-                started = true;
-                Debug.Log(transform.rotation.eulerAngles.y);
-                float rotation = Mathf.Lerp(transform.rotation.eulerAngles.y, followObject.rotation.eulerAngles.y, lerp);
-                //followObject.rotation = Quaternion.Euler(followObject.rotation.eulerAngles.x, rotation, followObject.rotation.eulerAngles.z);
-
-                //followObject.Rotate(followObject.up, followObject.rotation.eulerAngles.y - rotation);
-                angles = followObject.rotation.eulerAngles;
-                followObject.rotation = Quaternion.Lerp(followObject.rotation, transform.rotation, lerp);
-                StartCoroutine("Rotate", followObject.rotation.eulerAngles - transform.rotation.eulerAngles);
-                Fix();
-            }
+            TurnCharacter(1);
         }
+       else if(Input.GetKey(KeyCode.S))
+        {
+            TurnCharacter(-1);
+        }
+        */
+        Test();
+    }
+    private void Test()
+    {
+        Vector3 inputDirection = new Vector3(inputX, 0.0f, inputY).normalized;
+
+        if (inputX != 0f || inputY != 0f)
+        {
+            float _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + transform.eulerAngles.y;
+            float rotation = Mathf.SmoothDampAngle(followObject.eulerAngles.y, _targetRotation, ref rotationSpeed, duration);
+
+            followObject.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+        }
+    }
+    private void TurnCharacter(int rotation) // rotation = 1 veya -1
+    {
+        if (tween.IsActive())
+        {
+            tween.Kill();
+        }
+        Vector3 euler = followObject.rotation.eulerAngles;
+        
+        if(rotation == 1)
+        {
+            euler.y = transform.rotation.eulerAngles.y;
+        }
+        else
+        {
+            euler.y =  - transform.rotation.eulerAngles.y;
+        }
+        tween = followObject.DORotate(euler, duration);
     }
 
     private void Fix()
