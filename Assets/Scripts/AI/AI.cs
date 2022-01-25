@@ -12,7 +12,12 @@ public class AI : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent navMeshAgent;
     [SerializeField] private Animator animator;
+
     [SerializeField] private NPCState state;
+    [SerializeField] private float viewAngle;
+    [SerializeField] private float awaranessRadius;
+    [SerializeField] private float shootRadius;
+
 
     private void Start()
     {
@@ -23,11 +28,10 @@ public class AI : MonoBehaviour
     {
         switch(state)
         {
-            /*
+            
             case NPCState.Patrol:
                 ProcessPatrol();
                 break;
-            */
             case NPCState.Chasing:
                 ProcessChasing();
                 break;
@@ -36,6 +40,17 @@ public class AI : MonoBehaviour
                 break;
         }
     }
+
+    private void OnDrawGizmos()
+    {
+        
+    }
+
+    private void ProcessPatrol()
+    {
+
+    }
+
     private void ProcessChasing()
     {
 
