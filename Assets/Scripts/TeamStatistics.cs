@@ -31,7 +31,7 @@ public class TeamStatistics : MonoBehaviour
         {
             _team1score = value;
             SetScoreText();
-            CheckGameOver();
+            //CheckGameOver();
         }
     }
 
