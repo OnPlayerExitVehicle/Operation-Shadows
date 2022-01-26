@@ -90,7 +90,7 @@ public class PlayerMovement : MonoBehaviour {
         if (isGrounded && move.sqrMagnitude > moveSoundVelocity && !audioSource.isPlaying)
         {
             float pitch = UnityEngine.Random.Range(0.8f, 1.1f);
-            PV.RPC("PlayFootStep", RpcTarget.All, pitch);
+            //PV.RPC("PlayFootStep", RpcTarget.All, pitch);
         }
     }
 
