@@ -120,6 +120,14 @@ public class GunSystem : MonoBehaviour
                     //SFXPlay(Random.Range(9, 11));
                 }
             }
+
+
+            if (rayHit.collider.CompareTag("AI"))
+            {
+                AIHealth aiHealth = rayHit.collider.GetComponent<AIHealth>();
+                aiHealth.GiveMeDamage(damage);
+            }
+
             if (rayHit.collider.GetComponent<Rigidbody>())
             {
                 if (!rayHit.collider.CompareTag("Gun"))
@@ -131,6 +139,8 @@ public class GunSystem : MonoBehaviour
                     rayHit.collider.GetComponent<Rigidbody>().AddForce(knockback.normalized * knockBackObjectForce);
                 }
             }
+
+
             //Graphics
             tempBulletHoleObject = PhotonNetwork.Instantiate(Path.Combine("SceneSpawn", "BulletImpactMetalEffect"), rayHit.point, Quaternion.LookRotation(rayHit.normal), 0);
             if (rayHit.collider.GetComponent<PhotonView>())
