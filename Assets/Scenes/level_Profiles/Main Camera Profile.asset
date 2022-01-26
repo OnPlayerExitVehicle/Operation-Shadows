@@ -21,7 +21,7 @@ MonoBehaviour:
     value: 1.28
   threshold:
     overrideState: 1
-    value: 0.42
+    value: 0.25
   softKnee:
     overrideState: 1
     value: 0.926
@@ -46,7 +46,7 @@ MonoBehaviour:
     defaultState: 1
   dirtIntensity:
     overrideState: 1
-    value: 0.42
+    value: 0.64
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,13 +205,13 @@ MonoBehaviour:
     value: 100
   lift:
     overrideState: 1
-    value: {x: 1, y: 1, z: 1, w: 0.088261254}
+    value: {x: 1, y: 1, z: 1, w: 0.0794352}
   gamma:
     overrideState: 1
-    value: {x: 1, y: 1, z: 1, w: 0.12356577}
+    value: {x: 1, y: 1, z: 1, w: 0.017652255}
   gain:
     overrideState: 1
-    value: {x: 1, y: 1, z: 1, w: -0.008826126}
+    value: {x: 1, y: 1, z: 1, w: -0.15004414}
   masterCurve:
     overrideState: 1
     value:
@@ -1433,7 +1433,7 @@ MonoBehaviour:
     value: 0
   intensity:
     overrideState: 1
-    value: 1.79
+    value: 2.08
   color:
     overrideState: 1
     value: {r: 0, g: 0, b: 0, a: 1}
@@ -1451,7 +1451,7 @@ MonoBehaviour:
     value: -12
   thicknessModifier:
     overrideState: 1
-    value: 5.09
+    value: 7.3
   directLightingStrength:
     overrideState: 1
     value: 0
