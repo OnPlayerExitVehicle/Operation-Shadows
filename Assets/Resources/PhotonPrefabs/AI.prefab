@@ -549,6 +549,7 @@ MonoBehaviour:
   - {x: 5, y: 0.57, z: 12}
   positionCounter: 0
   patrolCheckRadius: 0.1
+  aiAnim: {fileID: 0}
   asdas: {fileID: 0}
   aigun: {fileID: 1563149990598351006}
 --- !u!114 &6309422258535897405
@@ -1166,6 +1167,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a0bdd062e6b4e2447945301980123aae, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 200c8c65faeab674d967fc689ca888be, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d6f2ebfbd28cb23468ed78b0fd96f7dd, type: 2}
     - target: {fileID: 5898910319187216332, guid: 200c8c65faeab674d967fc689ca888be, type: 3}
       propertyPath: m_TagString
       value: Untagged

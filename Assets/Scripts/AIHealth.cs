@@ -46,6 +46,7 @@ public class AIHealth : MonoBehaviour
 
     private void DoRagdoll()
     {
+        transform.GetChild(0).GetComponent<Animator>().enabled = false;
         foreach (Rigidbody rb in this.GetComponentsInChildren<Rigidbody>())
         {
             rb.isKinematic = false;

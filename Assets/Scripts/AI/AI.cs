@@ -21,6 +21,7 @@ public class AI : MonoBehaviour
     [SerializeField] private Vector3[] positions;
     [SerializeField] int positionCounter;
     [SerializeField] float patrolCheckRadius = 0.1f;
+    [SerializeField] private AIAnims aiAnim;
 
     public GameObject asdas;
 
