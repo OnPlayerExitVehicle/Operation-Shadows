@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 6c381d809e772024593599b319407b63
+guid: 8d200c113c14e7648bd56fda1200d6d1
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Rifle Walk
+    second: Neutral Idle
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -19,13 +19,7 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
-      copied configuration does not match position in animation file:\n\t'mixamorig:LeftUpLeg'
-      : position error = 8.932442 mm\n\t'mixamorig:LeftLeg' : position error = 8.548444
-      mm\n\t'mixamorig:LeftFoot' : position error = 7.009930 mm\n\t'mixamorig:LeftToeBase'
-      : position error = 5.053302 mm\n\t'mixamorig:RightUpLeg' : position error =
-      10.750799 mm\n\t'mixamorig:RightLeg' : position error = 8.721441 mm\n\t'mixamorig:RightFoot'
-      : position error = 6.707379 mm\n"
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -41,13 +35,13 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Rifle Walk
+      name: Neutral Idle
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 78
+      lastFrame: 463
       wrapMode: 0
-      orientationOffsetY: -45
+      orientationOffsetY: -30
       level: 0
       cycleOffset: 0
       loop: 0
