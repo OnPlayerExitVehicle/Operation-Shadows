@@ -52,8 +52,9 @@ public class PickUpController : MonoBehaviour
             playerStats = PV.GetComponent<NetworkPlayer>().playerAvatar.GetComponent<PlayerStats>();
         }
 
-        fpsCam = GameObject.FindGameObjectWithTag("MainCamera").transform;
-        gunContainer = fpsCam.GetChild(0).transform;
+        //fpsCam = GameObject.FindGameObjectWithTag("MainCamera").transform;
+        //gunContainer = fpsCam.GetChild(0).transform;
+        gunContainer = playerStats.gunHolderObject;
         localPlayerName = PhotonNetwork.LocalPlayer.NickName;
         CheckEquippedOrNot();
 

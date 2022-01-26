@@ -1,4 +1,5 @@
-﻿using Photon.Pun;
+﻿using Cinemachine;
+using Photon.Pun;
 using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
@@ -70,21 +71,31 @@ public class NetworkPlayer : MonoBehaviour
     {
         GameObject avatar;
         //if ((int)PhotonNetwork.LocalPlayer.CustomProperties["Team"] == 0)
-            avatar = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Player0"), 
+            avatar = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "MainCharacter"), 
                 GameSetup.GS.team0SpawnPoints[Random.Range(0, GameSetup.GS.team0SpawnPoints.Length)].position, Quaternion.identity, 0);
         /*else
             avatar = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Player1"), 
                 GameSetup.GS.team1SpawnPoints[Random.Range(0, GameSetup.GS.team1SpawnPoints.Length)].position, Quaternion.identity, 0);
         */
         GameObject mainCam = GameObject.FindGameObjectWithTag("MainCamera");
-        Transform camHolder = mainCam.transform.parent;
+        mainCam.GetComponent<TPSRotation>().followObject = avatar.transform;
+
+        /*Transform camHolder = mainCam.transform.parent;
         camHolder.parent = avatar.transform;
         camHolder.localPosition = camHolderOffset;
         camHolder.localRotation = Quaternion.Euler(Vector3.zero);
-        mainCam.GetComponent<FPSCAMController>().playerBody = avatar.transform;
-        avatar.layer = 9;
+        mainCam.GetComponent<FPSCAMController>().playerBody = avatar.transform;*/
+
+
         playerAvatar = avatar;
-        playerAvatar.GetComponent<PlayerStats>().networkPlayer = this;
+        PlayerStats playerStats = playerAvatar.GetComponent<PlayerStats>();
+
+        CinemachineFreeLook cm = GameObject.FindGameObjectWithTag("CMFreeLook").GetComponent<CinemachineFreeLook>();
+        cm.Follow = avatar.transform;
+        cm.LookAt = playerStats.lookAtObject;
+
+        avatar.layer = 9;
+        playerStats.networkPlayer = this;
         if(PhotonNetwork.IsMasterClient) Debug.Log("Owner");
         avatarSpawned = true;
 

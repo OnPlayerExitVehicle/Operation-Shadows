@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class TPSRotation : MonoBehaviour
 {
-    [SerializeField] private Transform followObject;
+    [SerializeField] public Transform followObject; //inspector
     [SerializeField] private float lerp;
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float time;

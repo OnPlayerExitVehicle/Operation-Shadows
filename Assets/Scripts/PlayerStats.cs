@@ -12,6 +12,9 @@ public class PlayerStats : MonoBehaviour
     public NetworkPlayer networkPlayer;
     public string whoKilledMe;
 
+    public Transform lookAtObject; //sets on inspepctor
+    public Transform gunHolderObject; // sets on inspector
+
     private GameObject sapka;
 
     public int health = 100;
