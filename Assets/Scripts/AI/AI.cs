@@ -108,7 +108,7 @@ public class AI : MonoBehaviour
 
         //if not in shoot range
         //Set chase speed
-        navMeshAgent.SetDestination(target.position);3
+        navMeshAgent.SetDestination(target.position);
     }
 
     private void ProcessShooting()
