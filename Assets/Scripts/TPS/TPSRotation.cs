@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System;
 
 public class TPSRotation : MonoBehaviour
 {
@@ -15,37 +16,28 @@ public class TPSRotation : MonoBehaviour
     private Vector3 angles;
     private Tween? tween;
 
-    private float inputX;
-    private float inputY;
+    private Vector2 input;
 
 
     private void Start()
     {
         GameManager.instance.camTpsRotation = this;
+        Debug_Start();
     }
 
     private void Update()
     {
-        inputX = Input.GetAxis("Horizontal");
-        inputY = Input.GetAxis("Vertical");
-        Debug.Log(inputY);
-        /*
-       if(Input.GetKey(KeyCode.W))
-        {
-            TurnCharacter(1);
-        }
-       else if(Input.GetKey(KeyCode.S))
-        {
-            TurnCharacter(-1);
-        }
-        */
+        input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        //Debug_Update();
         Test();
+        
     }
+
     private void Test()
     {
-        Vector3 inputDirection = new Vector3(inputX, 0.0f, inputY).normalized;
+        Vector3 inputDirection = new Vector3(input.x, 0.0f, input.y).normalized;
 
-        if (inputX != 0f || inputY != 0f)
+        if (input != Vector2.zero)
         {
             float _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + transform.eulerAngles.y;
             float rotation = Mathf.SmoothDampAngle(followObject.eulerAngles.y, _targetRotation, ref rotationSpeed, duration);
@@ -53,6 +45,17 @@ public class TPSRotation : MonoBehaviour
             followObject.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
         }
     }
+
+    private void Debug_Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private void Debug_Update()
+    {
+        Debug.Log(Input.GetAxis("Fire"));
+    }
+    /*
     private void TurnCharacter(int rotation) // rotation = 1 veya -1
     {
         if (tween.IsActive())
@@ -100,4 +103,5 @@ public class TPSRotation : MonoBehaviour
             
         }
     }
+    */
 }
