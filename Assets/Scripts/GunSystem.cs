@@ -15,6 +15,7 @@ public class GunSystem : MonoBehaviour
     private GameObject tempBulletHoleObject;
     public GameObject bulletHolePrefab;
     public float knockBackObjectForce = 500f;
+    private bool debug = true; // sunu silin amk
 
     //Gun stats
     public int damage;
@@ -78,8 +79,9 @@ public class GunSystem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading && totalAmmo > 0) Reload();
 
         //Shoot
-        if (readyToShoot && shooting && !reloading && bulletsLeft > 0)
+        if (readyToShoot && shooting && !reloading && (bulletsLeft > 0 || debug))
         {
+            GameManager.instance.camTpsRotation.RotateCameraWithFire();//?
             bulletsShot = bulletsPerTap;
             Shoot();
         }

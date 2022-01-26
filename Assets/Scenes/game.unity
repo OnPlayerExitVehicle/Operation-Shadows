@@ -20217,6 +20217,8 @@ MonoBehaviour:
   rotationSpeed: 1
   time: 0.5
   duration: 0.1
+  fireRotationSpeed: 0
+  fireDuration: 0.009
 --- !u!114 &1929169354
 MonoBehaviour:
   m_ObjectHideFlags: 0

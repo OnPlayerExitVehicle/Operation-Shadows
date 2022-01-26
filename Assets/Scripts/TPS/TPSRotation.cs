@@ -11,6 +11,8 @@ public class TPSRotation : MonoBehaviour
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float time;
     [SerializeField] private float duration;
+    [SerializeField] private float fireRotationSpeed;
+    [SerializeField] private float fireDuration;
     private bool started = false;
 
     private Vector3 angles;
@@ -29,11 +31,11 @@ public class TPSRotation : MonoBehaviour
     {
         input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         //Debug_Update();
-        Test();
+        RotateCamera();
         
     }
 
-    private void Test()
+    private void RotateCamera()
     {
         Vector3 inputDirection = new Vector3(input.x, 0.0f, input.y).normalized;
 
@@ -44,6 +46,14 @@ public class TPSRotation : MonoBehaviour
 
             followObject.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
         }
+    }
+
+    public void RotateCameraWithFire()
+    {
+        float _targetRotation = transform.eulerAngles.y;
+        float rotation = Mathf.SmoothDampAngle(followObject.eulerAngles.y, _targetRotation, ref fireRotationSpeed, fireDuration);
+
+        followObject.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
     }
 
     private void Debug_Start()
