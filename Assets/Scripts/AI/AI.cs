@@ -106,10 +106,15 @@ public class AI : MonoBehaviour
     private void ProcessChasing()
     {
 
+        //if not in shoot range
+        //Set chase speed
+        navMeshAgent.SetDestination(target.position);3
     }
 
     private void ProcessShooting()
     {
 
+        //if in shoot range shoot gun
+        //if player exits range exit state
     }
 }
