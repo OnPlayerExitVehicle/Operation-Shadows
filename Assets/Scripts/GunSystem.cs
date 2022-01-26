@@ -3,6 +3,7 @@ using Photon.Realtime;
 using UnityEngine;
 using TMPro;
 using System.IO;
+using System.Threading.Tasks;
 
 public class GunSystem : MonoBehaviour
 {
@@ -83,6 +84,8 @@ public class GunSystem : MonoBehaviour
             Shoot();
         }
     }
+
+    
     private void Shoot()
     {
         readyToShoot = false;
