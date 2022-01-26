@@ -33,7 +33,7 @@ public class AI : MonoBehaviour
     private void Start()
     {
         state = NPCState.Patrol;
-        //navMeshAgent.SetDestination(positions[1]);
+        navMeshAgent.SetDestination(positions[1]);
     }
 
     private void FixedUpdate()
@@ -41,7 +41,6 @@ public class AI : MonoBehaviour
         //Debug.Log(transform.forward.z);
         switch(state)
         {
-            
             case NPCState.Patrol:
                 ProcessPatrol();
                 break;
@@ -62,8 +61,12 @@ public class AI : MonoBehaviour
 
     private void ProcessPatrol()
     {
-        //SetPatrolPath();
-        CheckForEnemies(awarenessRadius);
+        SetPatrolPath();
+        if(CheckForEnemies(awarenessRadius))
+        {
+            navMeshAgent.SetDestination(target.position);
+            state = NPCState.Chasing;
+        }
     }
 
     private void SetPatrolPath()
@@ -77,7 +80,7 @@ public class AI : MonoBehaviour
         }
     }
 
-    private void CheckForEnemies(float radius)
+    private bool CheckForEnemies(float radius)
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
         if (colliders.Length > 0)
@@ -94,27 +97,49 @@ public class AI : MonoBehaviour
                         if (hit.collider.gameObject.CompareTag("Player"))
                         {
                             float angle = Vector3.Angle(transform.position, hit.transform.position);
-                            state = NPCState.Chasing;
-                            break;
+                            target = hit.collider.transform;
+                            return true;
                         }
                     }
                 }
             }
         }
+        return false;
     }
 
     private void ProcessChasing()
     {
-
-        //if not in shoot range
-        //Set chase speed
-        navMeshAgent.SetDestination(target.position);
+        if(!CheckForEnemies(shootRadius)) // SHOOT RADÝUSTA KÝMSE YOK AMK
+        {
+            if(CheckForEnemies(awarenessRadius))
+            {
+                navMeshAgent.SetDestination(target.position);
+            }
+            else
+            {
+                state = NPCState.Patrol;
+            }
+            
+        }
+        else
+        {
+            navMeshAgent.enabled = false;
+            state = NPCState.Shooting;
+        }
     }
 
     private void ProcessShooting()
     {
-
-        //if in shoot range shoot gun
-        //if player exits range exit state
+        if(!CheckForEnemies(shootRadius))
+        {
+            navMeshAgent.enabled = true;
+            navMeshAgent.ResetPath();
+            navMeshAgent.SetDestination(target.position);
+            state = NPCState.Chasing;
+        }
+        else
+        {
+            Debug.Log("Shooting");
+        }
     }
 }
