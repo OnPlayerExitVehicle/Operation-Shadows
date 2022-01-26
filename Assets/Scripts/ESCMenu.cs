@@ -21,13 +21,13 @@ public class ESCMenu : MonoBehaviour
     }
     private void Start()
     {
-        foreach (GameObject nPObject in GameObject.FindGameObjectsWithTag("NetworkPlayer"))
+        /*foreach (GameObject nPObject in GameObject.FindGameObjectsWithTag("NetworkPlayer"))
         {
             if (nPObject.GetComponent<PhotonView>().IsMine)
             {
                 networkPlayer = nPObject.GetComponent<NetworkPlayer>();
             }
-        }
+        }*/
     }
 
     // Update is called once per frame
@@ -83,12 +83,16 @@ public class ESCMenu : MonoBehaviour
                     mainCam.GetComponent<FPSCAMController>().enabled = false;
                 }
             }
-            if (networkPlayer.playerAvatar)
+            if (GameManager.instance.playerAvatar)
             {
-                if (networkPlayer.playerAvatar.GetComponent<PlayerMovement>())
-                    networkPlayer.playerAvatar.GetComponent<PlayerMovement>().esc = true;
-                if (mainCam.transform.GetChild(0).childCount > 0)
-                    mainCam.transform.GetChild(0).GetChild(0).GetComponent<GunSystem>().enabled = false;
+                GameManager.instance.playerMovement.esc = true;
+                GameManager.instance.camTpsRotation.enabled = false;
+
+                /*if (mainCam.transform.GetChild(0).childCount > 0)
+                    mainCam.transform.GetChild(0).GetChild(0).GetComponent<GunSystem>().enabled = false;*/
+
+                if (GameManager.instance.playerGunSystem)
+                    GameManager.instance.playerGunSystem.enabled = false;
             }
             GameSetup.GS.CursorActive();
             escUI.SetActive(true);
@@ -98,20 +102,21 @@ public class ESCMenu : MonoBehaviour
             escUI.SetActive(false);
             ayarUi.SetActive(false);
             GameSetup.GS.CursorDeactive();
-            if (mainCam)
+            /*if (mainCam)
             {
                 if (mainCam.GetComponent<FPSCAMController>())
                 {
                     mainCam.GetComponent<FPSCAMController>().enabled = true;
                 }
-            }
-            if (networkPlayer.playerAvatar)
+            }*/
+            if (GameManager.instance.playerAvatar)
             {
-                if (networkPlayer.playerAvatar.GetComponent<PlayerMovement>())
-                    networkPlayer.playerAvatar.GetComponent<PlayerMovement>().esc = false;
-                if(mainCam.transform.GetChild(0).childCount > 0)
-                    mainCam.transform.GetChild(0).GetChild(0).GetComponent<GunSystem>().enabled = true;
-                    
+                GameManager.instance.playerMovement.esc = false;
+                GameManager.instance.camTpsRotation.enabled = true;
+                /*if(mainCam.transform.GetChild(0).childCount > 0)
+                    mainCam.transform.GetChild(0).GetChild(0).GetComponent<GunSystem>().enabled = true;*/
+                if (GameManager.instance.playerGunSystem)
+                    GameManager.instance.playerGunSystem.enabled = true;
             }
         }
     }

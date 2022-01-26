@@ -20215,8 +20215,8 @@ MonoBehaviour:
   followObject: {fileID: 0}
   lerp: 0.05
   rotationSpeed: 1
-  time: 1
-  duration: 0.5
+  time: 0.5
+  duration: 0.1
 --- !u!114 &1929169354
 MonoBehaviour:
   m_ObjectHideFlags: 0

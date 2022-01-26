@@ -46,9 +46,9 @@ public class PlayerStats : MonoBehaviour
     {
         PV = GetComponent<PhotonView>();
         healthText = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(0).GetComponent<Text>();
-        sapka = transform.GetChild(1).gameObject;
+        /*sapka = transform.GetChild(1).gameObject;
         if(PV.IsMine)
-            sapka.SetActive(false);
+            sapka.SetActive(false);*/
     }
     private void Update()
     {
@@ -71,9 +71,11 @@ public class PlayerStats : MonoBehaviour
         SetDeathOnNetworkPlayer();
         //SetScore();
         GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(7).GetComponent<BuyMenu>().CloseBuy();
+        
         if (PV.IsMine)
             SilahAt();
         ActiveRebirth();
+        GameManager.instance.playerAvatar = null;
         YokEtVeRagDoll();
     }
 
@@ -88,8 +90,9 @@ public class PlayerStats : MonoBehaviour
 
     public void SilahAt()
     {
-        if(this.transform.GetChild(2).GetChild(0).GetChild(0).childCount > 0)
-            this.transform.GetChild(2).GetChild(0).GetChild(0).GetChild(0).GetComponent<PickUpController>().Drop();
+        /*if(this.transform.GetChild(2).GetChild(0).GetChild(0).childCount > 0)
+            this.transform.GetChild(2).GetChild(0).GetChild(0).GetChild(0).GetComponent<PickUpController>().Drop();*/
+        GameManager.instance.playerPickUpController.Drop();
     }
     private void ActiveRebirth()
     {
@@ -104,18 +107,21 @@ public class PlayerStats : MonoBehaviour
     {
         if (PV.IsMine)
         {
-            sapka.SetActive(true);
-            this.transform.GetChild(2).GetChild(0).GetComponent<FPSCAMController>().playerBody = null;
-            this.transform.GetChild(2).parent = null;
+            //sapka.SetActive(true);
+            //this.transform.GetChild(2).GetChild(0).GetComponent<FPSCAMController>().playerBody = null;
+            this.transform.GetChild(0).parent = null;
         }
         Destroy(this.gameObject.GetComponent<PlayerMovement>());
         Destroy(this.gameObject.GetComponent<CharacterController>());
-        this.gameObject.AddComponent<CapsuleCollider>();
-        Rigidbody rg = this.gameObject.AddComponent<Rigidbody>();
-        rg.AddForce(Vector3.up * 5f, ForceMode.Impulse);
+        //this.gameObject.AddComponent<CapsuleCollider>();
+
+        //do ragdoll in future
+
+        //Rigidbody rg = this.gameObject.AddComponent<Rigidbody>();
+        //rg.AddForce(Vector3.up * 5f, ForceMode.Impulse);
         this.gameObject.tag = "DeadBody";
         this.gameObject.layer = 0;
-        Destroy(this.gameObject.GetComponent<PlayerStats>());
+        Destroy(this);
     }
 
     public void DamageDealer(int damage, Vector3 enemypos)

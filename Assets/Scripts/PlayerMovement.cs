@@ -28,6 +28,8 @@ public class PlayerMovement : MonoBehaviour {
 
     public bool esc;
 
+    public float direction;
+
     private void Start()
     {
         PV = GetComponent<PhotonView>();
@@ -35,6 +37,8 @@ public class PlayerMovement : MonoBehaviour {
         audioSource = GetComponent<AudioSource>();
         speedWithoutBoost = speed;
         jumpWithoutBoost = jumpHeight;
+        if (PV.IsMine)
+            GameManager.instance.playerMovement = this;
     }
 
     private void Update()
@@ -51,13 +55,24 @@ public class PlayerMovement : MonoBehaviour {
         float x = 0;
         float z = 0;
 
+
+        direction = 0f;
         if (!esc)
         {
             x = Input.GetAxis("Horizontal");
             z = Input.GetAxis("Vertical");
+
+            x = Mathf.Abs(x);
+            z = Mathf.Abs(z);
+
+            direction = Mathf.Max(x, z);
+
+            /*if (x != 0 || z != 0)
+                direction = 1;*/
         }
 
-        move = transform.right * x + transform.forward * z;
+
+        move = transform.forward * direction;
         /*move = new Vector3(x, 0, z);
         move = transform.TransformDirection(transform);*/
 

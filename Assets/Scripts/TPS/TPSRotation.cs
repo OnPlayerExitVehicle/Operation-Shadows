@@ -18,6 +18,12 @@ public class TPSRotation : MonoBehaviour
     private float inputX;
     private float inputY;
 
+
+    private void Start()
+    {
+        GameManager.instance.camTpsRotation = this;
+    }
+
     private void Update()
     {
         inputX = Input.GetAxis("Horizontal");

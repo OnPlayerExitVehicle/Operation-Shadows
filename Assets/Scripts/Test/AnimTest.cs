@@ -10,17 +10,23 @@ public class AnimTest : MonoBehaviour
     public bool crouch;
 
     public Animator anim;
+    private PlayerMovement playerMovement;
+
+    private void Start()
+    {
+        playerMovement = GameManager.instance.playerMovement;
+    }
 
     private void Update()
     {
         
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            speed = Input.GetAxis("Vertical") * 5;
+            speed = playerMovement.direction * 5;
 
         }
         else
-            speed = Input.GetAxis("Vertical") * 2;
+            speed = playerMovement.direction * 2;
 
         anim.SetFloat("speed", speed);
 

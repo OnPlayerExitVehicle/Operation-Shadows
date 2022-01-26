@@ -50,6 +50,8 @@ public class NetworkPlayer : MonoBehaviour
         PV = GetComponent<PhotonView>();
         pressRtoSpawnText = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(4).gameObject;
         pressRtoSpawnText.SetActive(true);
+        if(PV.IsMine)
+            GameManager.instance.networkPlayer = this;
     }
 
     // Update is called once per frame
@@ -73,6 +75,7 @@ public class NetworkPlayer : MonoBehaviour
         //if ((int)PhotonNetwork.LocalPlayer.CustomProperties["Team"] == 0)
             avatar = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "MainCharacter"), 
                 GameSetup.GS.team0SpawnPoints[Random.Range(0, GameSetup.GS.team0SpawnPoints.Length)].position, Quaternion.identity, 0);
+        GameManager.instance.playerAvatar = avatar;
         /*else
             avatar = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Player1"), 
                 GameSetup.GS.team1SpawnPoints[Random.Range(0, GameSetup.GS.team1SpawnPoints.Length)].position, Quaternion.identity, 0);
@@ -105,8 +108,8 @@ public class NetworkPlayer : MonoBehaviour
     }
     public void SpawnGun(string whichGun)
     {
-        if (equippedGun)
-            equippedGun.Drop();
+        if (GameManager.instance.playerPickUpController)
+            GameManager.instance.playerPickUpController.Drop();
         GameObject gun = PhotonNetwork.Instantiate(Path.Combine("SceneSpawn", whichGun), transform.position, Quaternion.identity, 0);
         ImplementAvatarToGuns();
         gun.GetComponent<PickUpController>().PickUp();

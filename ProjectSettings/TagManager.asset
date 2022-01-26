@@ -9,6 +9,7 @@ TagManager:
   - TestHealthText
   - Canvas
   - CMFreeLook
+  - NetworkPlayer
   layers:
   - Default
   - TransparentFX

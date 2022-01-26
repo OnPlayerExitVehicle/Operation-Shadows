@@ -33,14 +33,18 @@ public class PickUpController : MonoBehaviour
 
     public void SetNewAvatarProperties()
     {
-        foreach (GameObject playeR in GameObject.FindGameObjectsWithTag("NetworkPlayer"))
+        /*foreach (GameObject playeR in GameObject.FindGameObjectsWithTag("NetworkPlayer"))
         {
             if (playeR.GetComponent<PhotonView>().IsMine)
             {
                 PV = playeR.GetComponent<PhotonView>();
                 break;
             }
-        }
+        }*/
+
+
+        PV = GameManager.instance.networkPlayer.GetComponent<PhotonView>();
+
         thisPV = GetComponent<PhotonView>();
         gunScript = GetComponent<GunSystem>();
         rb = GetComponent<Rigidbody>();
@@ -109,7 +113,12 @@ public class PickUpController : MonoBehaviour
         if (audioSource.clip != SoundClips.soundClips.gunSound[2])
             audioSource.clip = SoundClips.soundClips.gunSound[2];
         audioSource.Play();
-        PV.GetComponent<NetworkPlayer>().equippedGun = this;
+
+        GameManager.instance.playerPickUpController = this;
+        GameManager.instance.playerGunSystem = this.GetComponent<GunSystem>();
+
+
+        //PV.GetComponent<NetworkPlayer>().equippedGun = this;
 
         //Enable script
     }
@@ -133,7 +142,10 @@ public class PickUpController : MonoBehaviour
         //Add random rotation
         float random = Random.Range(-1f, 1f);
         rb.AddTorque(new Vector3(random, random, random) * 10);
-        PV.GetComponent<NetworkPlayer>().equippedGun = null;
+        //PV.GetComponent<NetworkPlayer>().equippedGun = null;
+
+        GameManager.instance.playerPickUpController = null;
+        GameManager.instance.playerGunSystem = null;
 
         //Disable script
     }
