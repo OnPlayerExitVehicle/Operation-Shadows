@@ -191,7 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   bulletHolePrefab: {fileID: 1000010355441670, guid: 02a509a7fa70ed740ba4197e20c5d32d, type: 3}
-  knockBackObjectForce: 75
+  knockBackObjectForce: 1000
   damage: 20
   totalAmmo: 90
   timeBetweenShooting: 0.07

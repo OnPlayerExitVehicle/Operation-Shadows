@@ -10,6 +10,9 @@ TagManager:
   - Canvas
   - CMFreeLook
   - NetworkPlayer
+  - DeadBody
+  - AI
+  - AIRagdoll
   layers:
   - Default
   - TransparentFX

@@ -70,7 +70,7 @@ public class PlayerStats : MonoBehaviour
         healthText.text = Health.ToString();
         SetDeathOnNetworkPlayer();
         //SetScore();
-        GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(7).GetComponent<BuyMenu>().CloseBuy();
+        //GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(7).GetComponent<BuyMenu>().CloseBuy();
         
         if (PV.IsMine)
             SilahAt();
@@ -105,8 +105,11 @@ public class PlayerStats : MonoBehaviour
 
     private void YokEtVeRagDoll()
     {
+        DoRagdoll();
+        this.GetComponentInChildren<Animator>().enabled = false;
         if (PV.IsMine)
         {
+
             //sapka.SetActive(true);
             //this.transform.GetChild(2).GetChild(0).GetComponent<FPSCAMController>().playerBody = null;
             this.transform.GetChild(0).parent = null;
@@ -122,6 +125,13 @@ public class PlayerStats : MonoBehaviour
         this.gameObject.tag = "DeadBody";
         this.gameObject.layer = 0;
         Destroy(this);
+    }
+    private void DoRagdoll()
+    {
+        foreach (Rigidbody rb in this.transform.GetComponentsInChildren<Rigidbody>())
+        {
+            rb.isKinematic = false;
+        }
     }
 
     public void DamageDealer(int damage, Vector3 enemypos)

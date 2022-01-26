@@ -33,8 +33,23 @@ public class AIHealth : MonoBehaviour
     private void KillMe()
     {
         print("öldüm");
+        DoRagdoll();
+        LooseParent();
         Destroy(this.gameObject);
         //doragdoll in future
+    }
+
+    private void LooseParent()
+    {
+        this.transform.GetChild(0).parent = null;
+    }
+
+    private void DoRagdoll()
+    {
+        foreach (Rigidbody rb in this.GetComponentsInChildren<Rigidbody>())
+        {
+            rb.isKinematic = false;
+        }
     }
 
     [PunRPC]

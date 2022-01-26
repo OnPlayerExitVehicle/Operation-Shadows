@@ -42,7 +42,7 @@ public class PickUpController : MonoBehaviour
             }
         }*/
 
-
+        fpsCam = Camera.main.transform;
         PV = GameManager.instance.networkPlayer.GetComponent<PhotonView>();
 
         thisPV = GetComponent<PhotonView>();

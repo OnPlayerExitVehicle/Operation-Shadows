@@ -5,7 +5,7 @@ using TMPro;
 using System.IO;
 using System.Threading.Tasks;
 
-public class GunSystem : MonoBehaviour
+public class AIGunSystem : MonoBehaviour
 {
     private PhotonView PV;
     //private PhotonView pvPlayer;
@@ -43,9 +43,11 @@ public class GunSystem : MonoBehaviour
 
     private void Start()
     {
-        fpsCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        text = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(1).GetComponent<TextMeshProUGUI>();
-        camShake = fpsCam.GetComponent<CameraShake>();
+        //fpsCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        //text = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+        //camShake = fpsCam.GetComponent<CameraShake>();
+
+
 
         audioSource = GetComponent<AudioSource>();
         shootAudioSource = attackPoint.GetComponent<AudioSource>();
@@ -64,94 +66,83 @@ public class GunSystem : MonoBehaviour
     }
     private void Update()
     {
-        if (PV.IsMine)
+        /*if (PV.IsMine)
         {
             MyInput();
             //SetText
             text.SetText(bulletsLeft + " / " + totalAmmo.ToString());
-        }
+        }*/
     }
-    private void MyInput()
+    public void MyInput(GameObject player)
     {
-        if (allowButtonHold) shooting = Input.GetKey(KeyCode.Mouse0);
-        else shooting = Input.GetKeyDown(KeyCode.Mouse0);
+        /*if (allowButtonHold) shooting = Input.GetKey(KeyCode.Mouse0);
+        else shooting = Input.GetKeyDown(KeyCode.Mouse0);*/
 
-        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading && totalAmmo > 0) Reload();
+        //if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading && totalAmmo > 0) Reload();
 
         //Shoot
-        if (readyToShoot && shooting && !reloading && (bulletsLeft > 0 || debug))
+        if (readyToShoot /*&& shooting */&& !reloading && (bulletsLeft > 0 || debug))
         {
-            GameManager.instance.camTpsRotation.RotateCameraWithFire();//?
+            //GameManager.instance.camTpsRotation.RotateCameraWithFire();//?
             bulletsShot = bulletsPerTap;
-            Shoot();
+            Shoot(player);
         }
     }
 
     
-    private void Shoot()
+    private void Shoot(GameObject plyr)
     {
         readyToShoot = false;
 
         //Spread
-        float x = Random.Range(-spread, spread);
-        float y = Random.Range(-spread, spread);
+        /*float x = Random.Range(-spread, spread);
+        float y = Random.Range(-spread, spread);*/
 
         //Calculate Direction with Spread
-        Vector3 direction = fpsCam.transform.forward;
+        //Vector3 direction = fpsCam.transform.forward;
 
         //RayCast
-        if (Physics.Raycast(fpsCam.transform.position, direction, out rayHit, range, whatIsShootable))
-        {
-            Debug.Log(rayHit.collider.name);
+        //if (Physics.Raycast(fpsCam.transform.position, direction, out rayHit, range, whatIsShootable))
+        //{
+            //Debug.Log(rayHit.collider.name);
 
-            if (rayHit.collider.CompareTag("Player"))
-            {
-                PlayerStats pStats = rayHit.collider.GetComponent<PlayerStats>();
+            //if (rayHit.collider.CompareTag("Player"))
+            //{
+                PlayerStats pStats = plyr.GetComponent<PlayerStats>();
                 pStats.DamageDealer(damage, this.transform.position);
                 //this.GetComponent<PickUpController>().PV.GetComponent<Economy>().Para += damage * 2;
                 if (pStats.Health <= 0) //öldürünce yapýlacaklar
                 {
-                    string myName = PhotonNetwork.LocalPlayer.NickName;
+                    string myName = "AI";
                     string enemyName = pStats.PV.Owner.NickName;
                     //pStats.PV.RPC("RPC_SetWhoKilledMe", RpcTarget.All, myName);
-                    this.GetComponent<PickUpController>().PV.GetComponent<NetworkPlayer>().PV.RPC("RPC_SetKills", RpcTarget.All);
+                    //this.GetComponent<PickUpController>().PV.GetComponent<NetworkPlayer>().PV.RPC("RPC_SetKills", RpcTarget.All);
                     //this.GetComponent<PickUpController>().PV.GetComponent<Economy>().Para += 100;
                     KillTable.KT.CreateKillTablePart(myName, enemyName);
                     //SFXPlay(Random.Range(9, 11));
                 }
-            }
-
-
-            if (rayHit.collider.CompareTag("AI"))
-            {
-                AIHealth aiHealth = rayHit.collider.GetComponent<AIHealth>();
-                aiHealth.GiveMeDamage(damage);
-            }
-
-            if (rayHit.collider.GetComponent<Rigidbody>())
+            //}
+            /*if (rayHit.collider.GetComponent<Rigidbody>())
             {
                 if (!rayHit.collider.CompareTag("Gun"))
                 {
                     PhotonView pView = rayHit.collider.GetComponent<PhotonView>();
-                    if (pView)
+                    //if (!pView.IsMine)
                         pView.RequestOwnership();
                     Vector3 knockback = rayHit.collider.transform.position - this.transform.position;
                     rayHit.collider.GetComponent<Rigidbody>().AddForce(knockback.normalized * knockBackObjectForce);
                 }
-            }
-
-
+            }*/
             //Graphics
-            tempBulletHoleObject = PhotonNetwork.Instantiate(Path.Combine("SceneSpawn", "BulletImpactMetalEffect"), rayHit.point, Quaternion.LookRotation(rayHit.normal), 0);
-            
-            if (rayHit.collider.GetComponent<PhotonView>() && !rayHit.collider.CompareTag("AIRagdoll"))
+            //tempBulletHoleObject = PhotonNetwork.Instantiate(Path.Combine("SceneSpawn", "BulletImpactMetalEffect"), rayHit.point, Quaternion.LookRotation(rayHit.normal), 0);
+            /*if (rayHit.collider.GetComponent<PhotonView>())
             {
                 int tempBulletHoleId = tempBulletHoleObject.GetComponent<PhotonView>().ViewID;
                 int parentObjectId = rayHit.collider.GetComponent<PhotonView>().ViewID;
                 PV.RPC("RPC_SetBulletHoleParent", RpcTarget.All, tempBulletHoleId, parentObjectId);
 
-            }
-        }
+            }*/
+        //}
 
         //ShakeCamera
         //StartCoroutine(camShake.Shake(camShakeDuration, camShakeMagnitude));
@@ -159,7 +150,7 @@ public class GunSystem : MonoBehaviour
 
 
 
-        PV.RPC("RPC_Shooting", RpcTarget.All);
+        PV.RPC("AIRPC_Shooting", RpcTarget.All);
 
 
         bulletsShot--;
@@ -195,12 +186,12 @@ public class GunSystem : MonoBehaviour
     private void ReloadFinished()
     {
         //bulletsLeft = magazineSize;
-        PV.RPC("RPC_TotalAmmo", RpcTarget.All);
+        PV.RPC("AIRPC_TotalAmmo", RpcTarget.All);
         reloading = false;
     }
 
     [PunRPC]
-    private void RPC_TotalAmmo()
+    private void AIRPC_TotalAmmo()
     {
         int totalAmmoAndMagazine = bulletsLeft + totalAmmo;
         if (totalAmmoAndMagazine > magazineSize)
@@ -217,11 +208,11 @@ public class GunSystem : MonoBehaviour
 
     public void SetTotalAmmoToEveryOne(int mermi)
     {
-        PV.RPC("RPC_SetTotalAmmo", RpcTarget.All, mermi);
+        PV.RPC("AIRPC_SetTotalAmmo", RpcTarget.All, mermi);
     }
 
     [PunRPC]
-    private void RPC_Shooting()
+    private void AIRPC_Shooting()
     {
         muzzleFlash.Play();
         shootAudioSource.Play();
@@ -230,13 +221,13 @@ public class GunSystem : MonoBehaviour
     }
 
     [PunRPC]
-    private void RPC_SetTotalAmmo(int ammo)
+    private void AIRPC_SetTotalAmmo(int ammo)
     {
         totalAmmo = ammo;
     }
 
     [PunRPC]
-    private void RPC_SetBulletHoleParent(int viewId1, int viewId2)
+    private void AIRPC_SetBulletHoleParent(int viewId1, int viewId2)
     {
         PhotonView.Find(viewId1).gameObject.transform.parent = PhotonView.Find(viewId2).gameObject.transform;
     }

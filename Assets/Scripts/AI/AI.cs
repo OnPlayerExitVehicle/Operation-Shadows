@@ -24,6 +24,8 @@ public class AI : MonoBehaviour
 
     public GameObject asdas;
 
+    public AIGunSystem aigun; // sets on inspector
+
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -139,7 +141,7 @@ public class AI : MonoBehaviour
         }
         else
         {
-            Debug.Log("Shooting");
+            aigun.MyInput(target.gameObject);
         }
     }
 }

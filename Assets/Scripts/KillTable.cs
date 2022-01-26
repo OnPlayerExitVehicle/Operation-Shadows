@@ -23,7 +23,7 @@ public class KillTable : MonoBehaviour
     public void CreateKillTablePart(string killed, string died)
     {
         
-        PV.RPC("RPC_CreateKillTablePart", RpcTarget.All, killed, died);
+        //PV.RPC("RPC_CreateKillTablePart", RpcTarget.All, killed, died);
     }
 
     [PunRPC]
@@ -41,17 +41,19 @@ public class KillTable : MonoBehaviour
         {
             if (player.NickName == killed)
             {
-                if ((int)player.CustomProperties["Team"] == 0)
+                killedText.color = Color.blue;
+                /*if ((int)player.CustomProperties["Team"] == 0)
                     killedText.color = Color.red;
                 if ((int)player.CustomProperties["Team"] == 1)
-                    killedText.color = Color.blue;
+                    killedText.color = Color.blue;*/
             }
             if (player.NickName == died)
             {
-                if ((int)player.CustomProperties["Team"] == 0)
+                diedText.color = Color.red;
+                /*if ((int)player.CustomProperties["Team"] == 0)
                     diedText.color = Color.red;
                 if ((int)player.CustomProperties["Team"] == 1)
-                    diedText.color = Color.blue;
+                    diedText.color = Color.blue;*/
             }
         }
     }
