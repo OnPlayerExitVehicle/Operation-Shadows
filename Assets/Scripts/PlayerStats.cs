@@ -99,7 +99,7 @@ public class PlayerStats : MonoBehaviour
         if (PV.IsMine)
         {
             networkPlayer.avatarSpawned = false;
-            networkPlayer.SetPressRtoSpawnText();
+            //networkPlayer.SetPressRtoSpawnText();
         }
     }
 

@@ -95,6 +95,7 @@ MonoBehaviour:
   PV: {fileID: 0}
   playerAvatar: {fileID: 0}
   equippedGun: {fileID: 0}
+  avatarReadyToSpawn: 0
   avatarSpawned: 0
   test: {fileID: 0}
   _kills: 0

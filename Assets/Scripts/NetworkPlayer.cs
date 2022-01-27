@@ -13,7 +13,8 @@ public class NetworkPlayer : MonoBehaviour
     public GameObject playerAvatar;
     public PickUpController equippedGun;
 
-    public bool avatarSpawned;
+    public bool avatarReadyToSpawn;
+    public bool avatarSpawned ;
     public GameObject test;
     private Vector3 camHolderOffset = new Vector3(0.006f, 0.52f, 0.13f);
 
@@ -49,20 +50,21 @@ public class NetworkPlayer : MonoBehaviour
     {
         PV = GetComponent<PhotonView>();
         pressRtoSpawnText = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(4).gameObject;
-        pressRtoSpawnText.SetActive(true);
+        //pressRtoSpawnText.SetActive(true);
         if(PV.IsMine)
             GameManager.instance.networkPlayer = this;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        MyInput();
+
     }
 
-    private void MyInput()
+    public void SpawnChar() // Sets On SpawnCharacter
     {
-        if (Input.GetKeyDown(KeyCode.R) && !avatarSpawned && GameSetup.GS.gameOver == false)
+        if (!avatarSpawned && GameSetup.GS.gameOver == false)
         {
             if(PV.IsMine)
                 SpawnPlayerAvatarAndCamSet();
