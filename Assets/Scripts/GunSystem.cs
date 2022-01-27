@@ -137,7 +137,7 @@ public class GunSystem : MonoBehaviour
             {
                 GameObject pot = rayHit.transform.gameObject;
                 breakPot potScript = pot.GetComponent<breakPot>();
-                potScript.OnHitBreakPot(this.transform);
+                potScript.OnHitBreakPot(pot, this.transform);
             }
 
             if (rayHit.collider.GetComponent<Rigidbody>())
@@ -156,8 +156,8 @@ public class GunSystem : MonoBehaviour
             //Graphics
             if (!rayHit.collider.CompareTag("AIRagdoll") && !rayHit.collider.CompareTag("AI") && !rayHit.collider.CompareTag("Window") && !rayHit.collider.CompareTag("Pot"))
             {
-                tempBulletHoleObject = PhotonNetwork.Instantiate(Path.Combine("SceneSpawn", "BulletImpactMetalEffect"), rayHit.point, Quaternion.LookRotation(rayHit.normal), 0);
-
+                tempBulletHoleObject = PhotonNetwork.Instantiate(Path.Combine("SceneSpawn", bulletHolePrefab.name), rayHit.point, Quaternion.LookRotation(rayHit.normal), 0);
+                print(bulletHolePrefab.name);
                 if (rayHit.collider.GetComponent<PhotonView>())
                 {
                     int tempBulletHoleId = tempBulletHoleObject.GetComponent<PhotonView>().ViewID;
