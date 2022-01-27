@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 public class AIGunSystem : MonoBehaviour
 {
-    private PhotonView PV;
+    public PhotonView PV;
     //private PhotonView pvPlayer;
     private AudioSource audioSource;
     private AudioSource shootAudioSource;
@@ -70,6 +70,7 @@ public class AIGunSystem : MonoBehaviour
     }
     private void Update()
     {
+        Debug.Log(readyToShoot);
         /*if (PV.IsMine)
         {
             MyInput();
@@ -83,10 +84,11 @@ public class AIGunSystem : MonoBehaviour
         else shooting = Input.GetKeyDown(KeyCode.Mouse0);*/
 
         //if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading && totalAmmo > 0) Reload();
-
+        Debug.Log($"ReadyToShoot = {readyToShoot}, Reloading = {reloading}");
         //Shoot
-        if (readyToShoot /*&& shooting */&& !reloading && (bulletsLeft > 0 || debug))
+        if (readyToShoot && !reloading && (bulletsLeft > 0 || debug))
         {
+            print("atesettimmm");
             //GameManager.instance.camTpsRotation.RotateCameraWithFire();//?
             bulletsShot = bulletsPerTap;
             Shoot(player);
@@ -96,7 +98,7 @@ public class AIGunSystem : MonoBehaviour
     
     private void Shoot(GameObject plyr)
     {
-        readyToShoot = false;
+        readyToShoot = false; //?
 
         //Spread
         /*float x = Random.Range(-spread, spread);
@@ -183,6 +185,7 @@ public class AIGunSystem : MonoBehaviour
 
     private void ResetShot()
     {
+        Debug.Log("Reset");
         readyToShoot = true;
     }
     private void Reload()

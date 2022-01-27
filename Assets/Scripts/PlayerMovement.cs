@@ -65,7 +65,7 @@ public class PlayerMovement : MonoBehaviour {
 
 
         direction = 0f;
-        Debug.Log(canMove);
+        //Debug.Log(canMove);
         if (!esc && canMove)
         {
             x = Input.GetAxis("Horizontal");

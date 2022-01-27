@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Bomba : MonoBehaviour
 {
-
+    public float timeToExplode;
     public float bombRadius;
     public float bombForce;
     private bool exploaded;
-    private void OnCollisionEnter(Collision collision)
+    private void Start()
     {
         print("bomba triggered");
-        if(!exploaded)
-        Explode();
+        if (!exploaded)
+            Invoke("Explode", timeToExplode);
     }
 
     private void Explode()
@@ -47,6 +47,7 @@ public class Bomba : MonoBehaviour
                 }
             }
         }
+        Destroy(this.gameObject);
     }
 
     private bool CheckIfTwoMethodBreakable(Transform obj)
