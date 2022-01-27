@@ -127,6 +127,8 @@ public class GunSystem : MonoBehaviour
             {
                 AIHealth aiHealth = rayHit.collider.GetComponent<AIHealth>();
                 aiHealth.GiveMeDamage(damage);
+                /*tempBulletHoleObject =*/ PhotonNetwork.Instantiate(Path.Combine("SceneSpawn", "oynatilacakParticle"), rayHit.point, Quaternion.LookRotation(rayHit.normal), 0);
+                //SceneSpawner dosyasýna particle eklenecek, particleýn ismi yukarýya verilecek.
             }
             if (rayHit.collider.CompareTag("AIRagdollPartsForHit"))
             {
@@ -163,13 +165,13 @@ public class GunSystem : MonoBehaviour
             {
                 tempBulletHoleObject = PhotonNetwork.Instantiate(Path.Combine("SceneSpawn", bulletHolePrefab.name), rayHit.point, Quaternion.LookRotation(rayHit.normal), 0);
                 print(bulletHolePrefab.name);
-                if (rayHit.collider.GetComponent<PhotonView>())
+                /*if (rayHit.collider.GetComponent<PhotonView>())
                 {
                     int tempBulletHoleId = tempBulletHoleObject.GetComponent<PhotonView>().ViewID;
                     int parentObjectId = rayHit.collider.GetComponent<PhotonView>().ViewID;
                     PV.RPC("RPC_SetBulletHoleParent", RpcTarget.All, tempBulletHoleId, parentObjectId);
 
-                }
+                }*/
             }
             
 
