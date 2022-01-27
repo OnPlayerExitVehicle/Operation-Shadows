@@ -84,6 +84,7 @@ public class GunSystem : MonoBehaviour
             GameManager.instance.camTpsRotation.RotateCameraWithFire();//?
             bulletsShot = bulletsPerTap;
             Shoot();
+            CinemachineShake.instance.ShakeCamera();
         }
     }
 
