@@ -128,6 +128,10 @@ public class GunSystem : MonoBehaviour
                 AIHealth aiHealth = rayHit.collider.GetComponent<AIHealth>();
                 aiHealth.GiveMeDamage(damage);
             }
+            if (rayHit.collider.CompareTag("Window"))
+            {
+                //future
+            }
 
             if (rayHit.collider.GetComponent<Rigidbody>())
             {
@@ -143,15 +147,20 @@ public class GunSystem : MonoBehaviour
 
 
             //Graphics
-            tempBulletHoleObject = PhotonNetwork.Instantiate(Path.Combine("SceneSpawn", "BulletImpactMetalEffect"), rayHit.point, Quaternion.LookRotation(rayHit.normal), 0);
-            
-            if (rayHit.collider.GetComponent<PhotonView>() && !rayHit.collider.CompareTag("AIRagdoll"))
+            /*if (!rayHit.collider.CompareTag("AIRagdoll"))
             {
-                int tempBulletHoleId = tempBulletHoleObject.GetComponent<PhotonView>().ViewID;
-                int parentObjectId = rayHit.collider.GetComponent<PhotonView>().ViewID;
-                PV.RPC("RPC_SetBulletHoleParent", RpcTarget.All, tempBulletHoleId, parentObjectId);
+                tempBulletHoleObject = PhotonNetwork.Instantiate(Path.Combine("SceneSpawn", "BulletImpactMetalEffect"), rayHit.point, Quaternion.LookRotation(rayHit.normal), 0);
 
-            }
+                if (rayHit.collider.GetComponent<PhotonView>())
+                {
+                    int tempBulletHoleId = tempBulletHoleObject.GetComponent<PhotonView>().ViewID;
+                    int parentObjectId = rayHit.collider.GetComponent<PhotonView>().ViewID;
+                    PV.RPC("RPC_SetBulletHoleParent", RpcTarget.All, tempBulletHoleId, parentObjectId);
+
+                }
+            }*/
+            
+
         }
 
         //ShakeCamera

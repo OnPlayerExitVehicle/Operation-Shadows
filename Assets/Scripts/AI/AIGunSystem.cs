@@ -41,6 +41,7 @@ public class AIGunSystem : MonoBehaviour
     public float camShakeMagnitude, camShakeDuration;
     public TextMeshProUGUI text;
 
+    private int debugDamageMultiplier = 0; // sil
     private void Start()
     {
         //fpsCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
@@ -109,7 +110,7 @@ public class AIGunSystem : MonoBehaviour
             //if (rayHit.collider.CompareTag("Player"))
             //{
                 PlayerStats pStats = plyr.GetComponent<PlayerStats>();
-                pStats.DamageDealer(damage, this.transform.position);
+                pStats.DamageDealer(damage * debugDamageMultiplier, this.transform.position);
                 //this.GetComponent<PickUpController>().PV.GetComponent<Economy>().Para += damage * 2;
                 if (pStats.Health <= 0) //öldürünce yapýlacaklar
                 {

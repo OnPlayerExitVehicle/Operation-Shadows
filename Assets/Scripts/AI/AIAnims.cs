@@ -11,7 +11,10 @@ public class AIAnims : MonoBehaviour
 
     private void Update()
     {
-        speed = agent.velocity.magnitude;
-        anim.SetFloat("speed", speed);
+        if(agent)
+        {
+            speed = agent.velocity.magnitude;
+            anim.SetFloat("speed", speed);
+        }
     }
 }

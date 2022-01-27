@@ -58,7 +58,7 @@ public class AI : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawSphere(transform.position, awarenessRadius);
+        //Gizmos.DrawSphere(transform.position, awarenessRadius);
         //Gizmos.DrawSphere(transform.position, shootRadius);
     }
 

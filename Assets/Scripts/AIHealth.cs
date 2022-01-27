@@ -36,7 +36,13 @@ public class AIHealth : MonoBehaviour
         DoRagdoll();
         LooseParent();
         Destroy(this.gameObject);
+        DisableAI();
         //doragdoll in future
+    }
+
+    private void DisableAI()
+    {
+        GetComponent<AI>().enabled = false;
     }
 
     private void LooseParent()
