@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour {
     public float jumpHeight = 3f;
     private float jumpWithoutBoost;
     public float gravity = -9.81f;
+    public float maxSpeed;
 
     public Transform groundCheck;
     public float groundDistance = 0.4f;
@@ -79,7 +80,12 @@ public class PlayerMovement : MonoBehaviour {
                 direction = 1;*/
         }
 
-
+        if (Input.GetKey(KeyCode.LeftShift) && speed <= maxSpeed)
+            speed += Time.deltaTime;
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            speed = speedWithoutBoost;
+        }
         move = transform.forward * direction;
         /*move = new Vector3(x, 0, z);
         move = transform.TransformDirection(transform);*/

@@ -161,8 +161,8 @@ public class PlayerStats : MonoBehaviour
     private void TakeDamage(int damage, Vector3 enemy)
     {
         Health -= damage;
-        Vector3 knockbackVector = this.transform.position - enemy;
-        this.GetComponent<CharacterController>().Move(knockbackVector * Time.deltaTime);
+        //Vector3 knockbackVector = this.transform.position - enemy;
+        //this.GetComponent<CharacterController>().Move(knockbackVector * Time.deltaTime);
     }
     [PunRPC]
     public void RPC_SetWhoKilledMe(string name)

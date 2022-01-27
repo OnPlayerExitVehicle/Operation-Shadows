@@ -17470,6 +17470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cmFL: {fileID: 0}
+  playerMovement: {fileID: 0}
 --- !u!4 &1393958300
 Transform:
   m_ObjectHideFlags: 0
@@ -24198,6 +24199,49 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1884066096}
   m_Mesh: {fileID: -5495902117074765545, guid: 2ba04badbf888494792e6cd5b12fe937, type: 3}
+--- !u!1 &1884679757
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1884679759}
+  - component: {fileID: 1884679758}
+  m_Layer: 0
+  m_Name: SpawnCharacter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1884679758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884679757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30ddb02fc18d1aa48b1e98d973754976, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1884679759
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884679757}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.1443746, y: 2.2215133, z: 6.0272303}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 30
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1891961207
 GameObject:
   m_ObjectHideFlags: 0
@@ -27404,6 +27448,10 @@ PrefabInstance:
     - target: {fileID: 5069757462816780868, guid: 1a9d9ff2f5966c8479ef858cd7fae16f, type: 3}
       propertyPath: viewIdField
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6074632740456171071, guid: 1a9d9ff2f5966c8479ef858cd7fae16f, type: 3}
+      propertyPath: viewIdField
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6309422258535897393, guid: 1a9d9ff2f5966c8479ef858cd7fae16f, type: 3}
       propertyPath: m_Name

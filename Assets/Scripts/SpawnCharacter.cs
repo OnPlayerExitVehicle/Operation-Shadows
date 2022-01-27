@@ -16,6 +16,10 @@ public class SpawnCharacter : MonoBehaviour
                 myPlayer = player;
             }
         }
+        Invoke("SpawnCoolDown", 1);
+    }
+    private void SpawnCoolDown()
+    {
         myPlayer.SpawnChar();
     }
 }

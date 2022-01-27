@@ -144,6 +144,7 @@ public class AI : MonoBehaviour
         else
         {
             aigun.MyInput(target.gameObject);
+            this.transform.LookAt(target);
         }
     }
 }

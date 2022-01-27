@@ -130,7 +130,14 @@ public class GunSystem : MonoBehaviour
             }
             if (rayHit.collider.CompareTag("Window"))
             {
-                //future
+                BreakableWindow breakableWindow = rayHit.collider.GetComponent<BreakableWindow>();
+                breakableWindow.breakWindow();
+            }
+            if (rayHit.collider.CompareTag("Pot"))
+            {
+                GameObject pot = rayHit.transform.gameObject;
+                breakPot potScript = pot.GetComponent<breakPot>();
+                potScript.OnHitBreakPot(pot);
             }
 
             if (rayHit.collider.GetComponent<Rigidbody>())
@@ -147,7 +154,7 @@ public class GunSystem : MonoBehaviour
 
 
             //Graphics
-            if (!rayHit.collider.CompareTag("AIRagdoll"))
+            if (!rayHit.collider.CompareTag("AIRagdoll") && !rayHit.collider.CompareTag("AI") && !rayHit.collider.CompareTag("Window") && !rayHit.collider.CompareTag("Pot"))
             {
                 tempBulletHoleObject = PhotonNetwork.Instantiate(Path.Combine("SceneSpawn", "BulletImpactMetalEffect"), rayHit.point, Quaternion.LookRotation(rayHit.normal), 0);
 

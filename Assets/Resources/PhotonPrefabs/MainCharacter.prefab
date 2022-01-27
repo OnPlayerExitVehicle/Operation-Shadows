@@ -102,6 +102,7 @@ MonoBehaviour:
   speed: 4
   jumpHeight: 1
   gravity: -19.62
+  maxSpeed: 6
   groundCheck: {fileID: 7571834213971215266}
   groundDistance: 0.15
   groundMask:
@@ -534,6 +535,16 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 200c8c65faeab674d967fc689ca888be, type: 3}
   m_PrefabInstance: {fileID: 4559139508817117881}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8978615506794590193 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4332706925441422008, guid: 200c8c65faeab674d967fc689ca888be, type: 3}
+  m_PrefabInstance: {fileID: 4559139508817117881}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4420972711403520255 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -9070493210130169274, guid: 200c8c65faeab674d967fc689ca888be, type: 3}
+  m_PrefabInstance: {fileID: 4559139508817117881}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8183169954587655268 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3542885339558904099, guid: 200c8c65faeab674d967fc689ca888be, type: 3}
@@ -569,9 +580,9 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -290750445479886849, guid: 200c8c65faeab674d967fc689ca888be, type: 3}
   m_PrefabInstance: {fileID: 4559139508817117881}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &4420972711403520255 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -9070493210130169274, guid: 200c8c65faeab674d967fc689ca888be, type: 3}
+--- !u!4 &2806021775372434801 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1852576806548013000, guid: 200c8c65faeab674d967fc689ca888be, type: 3}
   m_PrefabInstance: {fileID: 4559139508817117881}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1520202381557940409 stripped
@@ -579,19 +590,9 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -6170625038081293824, guid: 200c8c65faeab674d967fc689ca888be, type: 3}
   m_PrefabInstance: {fileID: 4559139508817117881}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &2806021775372434801 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1852576806548013000, guid: 200c8c65faeab674d967fc689ca888be, type: 3}
-  m_PrefabInstance: {fileID: 4559139508817117881}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7669515792382260786 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3086436065929644917, guid: 200c8c65faeab674d967fc689ca888be, type: 3}
-  m_PrefabInstance: {fileID: 4559139508817117881}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8978615506794590193 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -4332706925441422008, guid: 200c8c65faeab674d967fc689ca888be, type: 3}
   m_PrefabInstance: {fileID: 4559139508817117881}
   m_PrefabAsset: {fileID: 0}
 --- !u!54 &2380636838206524702
@@ -851,6 +852,35 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.41848686, y: 0.41442078, z: 0.25337803}
   m_Center: {x: 0.00010210276, y: 0.15045157, z: -0.03198895}
+--- !u!114 &684418422936586991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3712154577990287336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 1
+    SynchronizeType: 2
+    Name: speed
+  - Type: 4
+    SynchronizeType: 1
+    Name: crouch
+  - Type: 4
+    SynchronizeType: 1
+    Name: fire
+  m_SynchronizeLayers:
+  - SynchronizeType: 2
+    LayerIndex: 0
+  - SynchronizeType: 2
+    LayerIndex: 1
 --- !u!114 &4559139509135653707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -866,6 +896,29 @@ MonoBehaviour:
   speed: 0
   crouch: 0
   anim: {fileID: 7939780806463913768}
+--- !u!114 &6247213561884739996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3712154577990287336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 684418422936586991}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!54 &7425399005582585071
 Rigidbody:
   m_ObjectHideFlags: 0
