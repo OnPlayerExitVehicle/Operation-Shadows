@@ -106,7 +106,7 @@ public class NetworkPlayer : MonoBehaviour
 
         pressRtoSpawnText.SetActive(false);
 
-        SpawnGun("ak47");
+        SpawnGun("m4a4");
     }
     public void SpawnGun(string whichGun)
     {
