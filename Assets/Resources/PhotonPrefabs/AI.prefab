@@ -550,6 +550,7 @@ MonoBehaviour:
   positionCounter: 0
   patrolCheckRadius: 0.1
   aiAnim: {fileID: 0}
+  exitShootingPlusRadius: 0.5
   asdas: {fileID: 0}
   aigun: {fileID: 1563149990598351006}
 --- !u!114 &6309422258535897405

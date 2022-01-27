@@ -22,6 +22,7 @@ public class AI : MonoBehaviour
     [SerializeField] int positionCounter;
     [SerializeField] float patrolCheckRadius = 0.1f;
     [SerializeField] private AIAnims aiAnim;
+    [SerializeField] private float exitShootingPlusRadius;
 
     public GameObject asdas;
 
@@ -133,7 +134,7 @@ public class AI : MonoBehaviour
 
     private void ProcessShooting()
     {
-        if(!CheckForEnemies(shootRadius))
+        if(!CheckForEnemies(shootRadius + exitShootingPlusRadius))
         {
             navMeshAgent.enabled = true;
             navMeshAgent.ResetPath();
