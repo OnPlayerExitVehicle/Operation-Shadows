@@ -30,6 +30,9 @@ public class PlayerMovement : MonoBehaviour {
 
     public float direction;
 
+    public bool canMove = true;
+    
+
     private void Start()
     {
         PV = GetComponent<PhotonView>();
@@ -38,7 +41,11 @@ public class PlayerMovement : MonoBehaviour {
         speedWithoutBoost = speed;
         jumpWithoutBoost = jumpHeight;
         if (PV.IsMine)
+        {
             GameManager.instance.playerMovement = this;
+            InteractionManager.instance.playerMovement = this; // ?
+        }
+        
     }
 
     private void Update()
@@ -57,7 +64,8 @@ public class PlayerMovement : MonoBehaviour {
 
 
         direction = 0f;
-        if (!esc)
+        Debug.Log(canMove);
+        if (!esc && canMove)
         {
             x = Input.GetAxis("Horizontal");
             z = Input.GetAxis("Vertical");
