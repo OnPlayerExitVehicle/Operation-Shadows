@@ -130,7 +130,7 @@ public class AIGunSystem : MonoBehaviour
             }
             if (rayHit.collider.CompareTag("Pot"))
             {
-                rayHit.collider.GetComponent<breakPot>().OnHitBreakPot(null/*this.transform*/);
+                rayHit.collider.GetComponent<breakPot>().OnHitBreakPot(rayHit.collider.gameObject, this.transform);
             }
             /*if (rayHit.collider.GetComponent<Rigidbody>())
             {
