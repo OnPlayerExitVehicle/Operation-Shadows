@@ -5,18 +5,24 @@ using UnityEngine;
 public class breakPot : MonoBehaviour
 {
     Rigidbody rb;
-    [SerializeField] float explosionRadius;
-    [SerializeField] float explosionStrength = 100f;
-    public void OnHitBreakPot(GameObject pot, Transform player)
+    [SerializeField] float explosionRadius; //Patlama iþlendiðinde daðýldýðý alan.
+    [SerializeField] float explosionStrength = 100f; //Patlama gücü
+    public void OnHitBreakPot(Transform player)
     {
-        //Script ve gameObject alýndý, gameObject fonksiyona iletildi. Kýrýk olmayan hali fonksiyona parametre olarak geldi.
+        //Merminin çarptýðý noktada çalýþtýrýlýr. Çarpan obje GUNSYSTEM.cs de kontrol edilir.
+        //Kýrýlabilir eþyanýn çalýþma þekli Parent: EmptyGameObject / Child: Objenin kýrýlmamýþ hali ve Objenin kýrýlmýþ hali.
+        //Objenin kýrýlmamýþ halinden parenta gidilir, parenttan objenin kýrýlmýþ haline gidilir.
+        //Objenin kýrýlmamýþ hali scene'den kaldýrýlýr ve kýrýlmýþ hali yüklenir.
+        //Player'ýn transformunun alýnma sebebi merminin ne taraftan geldiðine baðlý olarak objeye FORCE uygulanmasýdýr.
         //<>
 
         GameObject parent = transform.parent.gameObject;
         GameObject child = parent.transform.GetChild(0).gameObject;
         child.SetActive(true);
         rb = child.GetComponent<Rigidbody>();
-        for(int i= 0; i < child.transform.childCount; i++)
+
+        //Objenin kýrýlmýþ hali aktive olur içerisine patlama olaylarý eklenir.
+        for (int i= 0; i < child.transform.childCount; i++)
         {
             rb = child.transform.GetChild(i).gameObject.AddComponent<Rigidbody>();
             rb.AddExplosionForce(explosionStrength, transform.position, explosionRadius);
