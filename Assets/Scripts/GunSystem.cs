@@ -137,7 +137,7 @@ public class GunSystem : MonoBehaviour
             {
                 GameObject pot = rayHit.transform.gameObject;
                 breakPot potScript = pot.GetComponent<breakPot>();
-                potScript.OnHitBreakPot(pot, this.transform);
+                potScript.OnHitBreakPot(this.transform);
             }
 
             if (rayHit.collider.GetComponent<Rigidbody>())

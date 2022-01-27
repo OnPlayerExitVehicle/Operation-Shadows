@@ -6,7 +6,7 @@ using System;
 
 public class TPSRotation : MonoBehaviour
 {
-    [SerializeField] public Transform followObject; //inspector
+    [SerializeField] public Transform followObject; 
     [SerializeField] private float lerp;
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float time;
@@ -39,7 +39,7 @@ public class TPSRotation : MonoBehaviour
     {
         Vector3 inputDirection = new Vector3(input.x, 0.0f, input.y).normalized;
 
-        if (input != Vector2.zero)
+        if (followObject && input != Vector2.zero)
         {
             float _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + transform.eulerAngles.y;
             float rotation = Mathf.SmoothDampAngle(followObject.eulerAngles.y, _targetRotation, ref rotationSpeed, duration);
@@ -50,6 +50,8 @@ public class TPSRotation : MonoBehaviour
 
     public void RotateCameraWithFire()
     {
+        if (!followObject)
+            return;
         float _targetRotation = transform.eulerAngles.y;
         float rotation = Mathf.SmoothDampAngle(followObject.eulerAngles.y, _targetRotation, ref fireRotationSpeed, fireDuration);
 
