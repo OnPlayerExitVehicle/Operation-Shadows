@@ -128,6 +128,11 @@ public class GunSystem : MonoBehaviour
                 AIHealth aiHealth = rayHit.collider.GetComponent<AIHealth>();
                 aiHealth.GiveMeDamage(damage);
             }
+            if (rayHit.collider.CompareTag("AIRagdollPartsForHit"))
+            {
+                AIRagdollPartsForHit AIRagdollPartsForHit = rayHit.collider.GetComponent<AIRagdollPartsForHit>();
+                AIRagdollPartsForHit.NoticeHit(damage);
+            }
             if (rayHit.collider.CompareTag("Window"))
             {
                 BreakableWindow breakableWindow = rayHit.collider.GetComponent<BreakableWindow>();
