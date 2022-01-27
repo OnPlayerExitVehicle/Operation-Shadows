@@ -24,6 +24,8 @@ public class AI : MonoBehaviour
     [SerializeField] private AIAnims aiAnim;
     [SerializeField] private float exitShootingPlusRadius;
 
+    [SerializeField] private float gunTolerance;
+
     public GameObject asdas;
 
     public AIGunSystem aigun; // sets on inspector
@@ -98,12 +100,13 @@ public class AI : MonoBehaviour
                     if (Physics.Linecast(transform.position, colliders[i].transform.position, out hit))
                     {
                         asdas = hit.collider.gameObject;
-                        if (hit.collider.gameObject.CompareTag("Player"))
+                        if (hit.collider.gameObject.CompareTag("Player") || hit.collider.gameObject.CompareTag("Pot"))
                         {
                             float angle = Vector3.Angle(transform.position, hit.transform.position);
                             target = hit.collider.transform;
                             return true;
                         }
+
                     }
                 }
             }

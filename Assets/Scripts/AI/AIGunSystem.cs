@@ -29,7 +29,7 @@ public class AIGunSystem : MonoBehaviour
     bool shooting, readyToShoot, reloading;
 
     //Reference
-    public Camera fpsCam;
+    //public Camera tpsCam;
     public Transform attackPoint;
     public RaycastHit rayHit;
     public LayerMask whatIsShootable;
@@ -41,9 +41,12 @@ public class AIGunSystem : MonoBehaviour
     public float camShakeMagnitude, camShakeDuration;
     public TextMeshProUGUI text;
 
-    private int debugDamageMultiplier = 0; // sil
+    [SerializeField] private float tolerance;
+
+    private int debugDamageMultiplier = 1; // sil
     private void Start()
     {
+        //tpsCam = Camera.main;
         //fpsCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         //text = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(1).GetComponent<TextMeshProUGUI>();
         //camShake = fpsCam.GetComponent<CameraShake>();
@@ -100,15 +103,16 @@ public class AIGunSystem : MonoBehaviour
         float y = Random.Range(-spread, spread);*/
 
         //Calculate Direction with Spread
-        //Vector3 direction = fpsCam.transform.forward;
+        Vector3 direction = transform.forward;
+        direction = Quaternion.Euler(Random.Range(-tolerance, tolerance), Random.Range(-tolerance, tolerance), 0.0f) * direction;
 
         //RayCast
-        //if (Physics.Raycast(fpsCam.transform.position, direction, out rayHit, range, whatIsShootable))
-        //{
+        if (Physics.Raycast(transform.position, direction, out rayHit, range, whatIsShootable))
+        {
             //Debug.Log(rayHit.collider.name);
 
-            //if (rayHit.collider.CompareTag("Player"))
-            //{
+            if (rayHit.collider.CompareTag("Player"))
+            {
                 PlayerStats pStats = plyr.GetComponent<PlayerStats>();
                 pStats.DamageDealer(damage * debugDamageMultiplier, this.transform.position);
                 //this.GetComponent<PickUpController>().PV.GetComponent<Economy>().Para += damage * 2;
@@ -122,7 +126,12 @@ public class AIGunSystem : MonoBehaviour
                     KillTable.KT.CreateKillTablePart(myName, enemyName);
                     //SFXPlay(Random.Range(9, 11));
                 }
-            //}
+
+            }
+            if (rayHit.collider.CompareTag("Pot"))
+            {
+                rayHit.collider.GetComponent<breakPot>().OnHitBreakPot(null/*this.transform*/);
+            }
             /*if (rayHit.collider.GetComponent<Rigidbody>())
             {
                 if (!rayHit.collider.CompareTag("Gun"))
@@ -143,7 +152,7 @@ public class AIGunSystem : MonoBehaviour
                 PV.RPC("RPC_SetBulletHoleParent", RpcTarget.All, tempBulletHoleId, parentObjectId);
 
             }*/
-        //}
+        }
 
         //ShakeCamera
         //StartCoroutine(camShake.Shake(camShakeDuration, camShakeMagnitude));
