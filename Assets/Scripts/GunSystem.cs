@@ -147,7 +147,7 @@ public class GunSystem : MonoBehaviour
 
 
             //Graphics
-            /*if (!rayHit.collider.CompareTag("AIRagdoll"))
+            if (!rayHit.collider.CompareTag("AIRagdoll"))
             {
                 tempBulletHoleObject = PhotonNetwork.Instantiate(Path.Combine("SceneSpawn", "BulletImpactMetalEffect"), rayHit.point, Quaternion.LookRotation(rayHit.normal), 0);
 
@@ -158,7 +158,7 @@ public class GunSystem : MonoBehaviour
                     PV.RPC("RPC_SetBulletHoleParent", RpcTarget.All, tempBulletHoleId, parentObjectId);
 
                 }
-            }*/
+            }
             
 
         }
