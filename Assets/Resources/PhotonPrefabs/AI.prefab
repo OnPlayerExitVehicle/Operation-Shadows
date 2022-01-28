@@ -1401,6 +1401,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: m4a4_ai
       objectReference: {fileID: 0}
+    - target: {fileID: 2344645604130870469, guid: 884b835594549b141a32f85b67761a06, type: 3}
+      propertyPath: m_TagString
+      value: AIRagdoll
+      objectReference: {fileID: 0}
+    - target: {fileID: 8151020995152267459, guid: 884b835594549b141a32f85b67761a06, type: 3}
+      propertyPath: ObservedComponents.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 884b835594549b141a32f85b67761a06, type: 3}
 --- !u!114 &318513039715449094 stripped

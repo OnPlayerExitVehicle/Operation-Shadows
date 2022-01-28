@@ -127,13 +127,13 @@ public class GunSystem : MonoBehaviour
             {
                 AIHealth aiHealth = rayHit.collider.GetComponent<AIHealth>();
                 aiHealth.GiveMeDamage(damage);
-                /*tempBulletHoleObject =*/ PhotonNetwork.Instantiate(Path.Combine("SceneSpawn", "oynatilacakParticle"), rayHit.point, Quaternion.LookRotation(rayHit.normal), 0);
-                //SceneSpawner dosyasýna particle eklenecek, particleýn ismi yukarýya verilecek.
+                PhotonNetwork.Instantiate(Path.Combine("SceneSpawn", "Blood"), rayHit.point, Quaternion.LookRotation(rayHit.normal), 0);
             }
             if (rayHit.collider.CompareTag("AIRagdollPartsForHit"))
             {
                 AIRagdollPartsForHit AIRagdollPartsForHit = rayHit.collider.GetComponent<AIRagdollPartsForHit>();
                 AIRagdollPartsForHit.NoticeHit(damage);
+                PhotonNetwork.Instantiate(Path.Combine("SceneSpawn", "Blood"), rayHit.point, Quaternion.LookRotation(rayHit.normal), 0);
             }
             if (rayHit.collider.CompareTag("Window"))
             {
