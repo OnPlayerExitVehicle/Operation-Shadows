@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class breakPot : MonoBehaviour
@@ -7,6 +8,7 @@ public class breakPot : MonoBehaviour
     Rigidbody rb;
     [SerializeField] float explosionRadius; //Patlama iþlendiðinde daðýldýðý alan.
     [SerializeField] float explosionStrength = 100f; //Patlama gücü
+    public GameObject audio;
     public void OnHitBreakPot(Transform player)
     {
         //Merminin çarptýðý noktada çalýþtýrýlýr. Çarpan obje GUNSYSTEM.cs de kontrol edilir.
@@ -15,6 +17,7 @@ public class breakPot : MonoBehaviour
         //Objenin kýrýlmamýþ hali scene'den kaldýrýlýr ve kýrýlmýþ hali yüklenir.
         //Player'ýn transformunun alýnma sebebi merminin ne taraftan geldiðine baðlý olarak objeye FORCE uygulanmasýdýr.
         //<>
+        Instantiate(audio, transform.position,Quaternion.identity);
 
         GameObject parent = transform.parent.gameObject;
         GameObject child = parent.transform.GetChild(0).gameObject;
