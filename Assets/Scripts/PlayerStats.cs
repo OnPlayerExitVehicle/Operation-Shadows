@@ -57,6 +57,7 @@ public class PlayerStats : MonoBehaviour
         if (!PV.IsMine)
             return;
         healthText.text = Health.ToString();
+        Debug.Log(charName);
     }
 
     private void SFXPlay(int index)
