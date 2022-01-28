@@ -107,6 +107,7 @@ public class PlayerStats : MonoBehaviour
     {
         DoRagdoll();
         this.GetComponentInChildren<Animator>().enabled = false;
+        this.transform.GetChild(2).gameObject.SetActive(false);
         if (PV.IsMine)
         {
 
@@ -124,7 +125,7 @@ public class PlayerStats : MonoBehaviour
         //rg.AddForce(Vector3.up * 5f, ForceMode.Impulse);
         this.gameObject.tag = "DeadBody";
         this.gameObject.layer = 0;
-        Destroy(this);
+        Destroy(this.gameObject);
     }
     private void DoRagdoll()
     {
