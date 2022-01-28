@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToExplode: 3
-  bombRadius: 50
+  bombRadius: 10
   bombForce: 500
   killRadius: 5
   bombDamage: 100
