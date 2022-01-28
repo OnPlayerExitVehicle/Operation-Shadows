@@ -25,6 +25,11 @@ public class NickNameSetter : MonoBehaviour
         name.text = isim;
     }
 
+    private void Update()
+    {
+        Debug.Log(PhotonNetwork.NickName);
+    }
+
 
 
 }
