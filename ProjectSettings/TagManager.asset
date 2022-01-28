@@ -17,6 +17,8 @@ TagManager:
   - Interaction
   - Pot
   - Exploadable
+  - AIRagdollPartsForHit
+  - PlayerRagdollPartsForHit
   layers:
   - Default
   - TransparentFX

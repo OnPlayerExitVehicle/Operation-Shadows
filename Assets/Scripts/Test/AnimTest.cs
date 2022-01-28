@@ -19,7 +19,8 @@ public class AnimTest : MonoBehaviour
 
     private void Update()
     {
-        
+        if (!playerMovement)
+            return;
         if (Input.GetKey(KeyCode.LeftShift))
         {
             speed = playerMovement.direction * 5;
