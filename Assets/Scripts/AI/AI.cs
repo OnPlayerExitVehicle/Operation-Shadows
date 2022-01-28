@@ -5,11 +5,13 @@ using UnityEngine.AI;
 
 enum NPCState
 {
-    Patrol, Chasing, Shooting
+    Patrol, Chasing, Shooting, Idle
 }
 [RequireComponent(typeof(NavMeshAgent))]
 public class AI : MonoBehaviour
 {
+    [SerializeField] private bool startPatrolling;
+
     [SerializeField] private NavMeshAgent navMeshAgent;
     [SerializeField] private Animator animator;
 
@@ -38,8 +40,17 @@ public class AI : MonoBehaviour
 
     private void Start()
     {
-        state = NPCState.Patrol;
-        navMeshAgent.SetDestination(positions[1]);
+        if (startPatrolling)
+        {
+            state = NPCState.Patrol;
+            navMeshAgent.SetDestination(positions[1]);
+        }
+        else
+        {
+            state = NPCState.Idle;
+            navMeshAgent.SetDestination(transform.position);
+        }
+        
     }
 
     private void FixedUpdate()
@@ -56,6 +67,9 @@ public class AI : MonoBehaviour
             case NPCState.Shooting:
                 ProcessShooting();
                 break;
+            case NPCState.Idle:
+                ProcessIdle();
+                break;
         }
     }
 
@@ -65,10 +79,21 @@ public class AI : MonoBehaviour
         //Gizmos.DrawSphere(transform.position, shootRadius);
     }
 
+    private void ProcessIdle()
+    {
+        
+        CheckAndTargetIfEnemyFound();
+    }
+
     private void ProcessPatrol()
     {
         SetPatrolPath();
-        if(CheckForEnemies(awarenessRadius))
+        CheckAndTargetIfEnemyFound();
+    }
+
+    private void CheckAndTargetIfEnemyFound()
+    {
+        if (CheckForEnemies(awarenessRadius))
         {
             navMeshAgent.SetDestination(target.position);
             state = NPCState.Chasing;
