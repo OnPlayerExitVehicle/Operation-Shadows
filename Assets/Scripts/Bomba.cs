@@ -76,6 +76,10 @@ public class Bomba : MonoBehaviour
                     }
                 }
             }
+            if (coll[i].CompareTag("Pot"))
+            {
+                coll[i].GetComponent<breakPot>().OnHitBreakPot(transform);
+            }
         }
         Destroy(this.gameObject, 10);
     }
