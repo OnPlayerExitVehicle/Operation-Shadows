@@ -17,6 +17,8 @@ public class PlayerStats : MonoBehaviour
 
     private GameObject sapka;
 
+    public NickNameSetter charName; // Sets on NickNameSetter
+
     public int health = 100;
     public int Health
     {
@@ -68,6 +70,7 @@ public class PlayerStats : MonoBehaviour
     {
         Debug.Log(this.gameObject + " öldü");
         healthText.text = Health.ToString();
+        charName.gameObject.SetActive(false);
         SetDeathOnNetworkPlayer();
         //SetScore();
         //GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(7).GetComponent<BuyMenu>().CloseBuy();

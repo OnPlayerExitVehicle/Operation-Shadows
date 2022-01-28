@@ -41,7 +41,7 @@ public class breakPot : MonoBehaviour
         //Objenin kýrýlmýþ hali aktive olur içerisine patlama olaylarý eklenir.
         for (int i = 0; i < child.transform.childCount; i++)
         {
-            rb = child.transform.GetChild(i).gameObject.AddComponent<Rigidbody>();
+            rb = child.transform.GetChild(i).GetComponent<Rigidbody>();
             rb.AddExplosionForce(explosionStrength, transform.position, explosionRadius);
             Vector3 direction = (this.transform.position - player) + new Vector3(RandomFloat(-5, 5), RandomFloat(-5, 5), RandomFloat(-5, 5));
             rb.AddForce(direction.normalized * RandomFloat(5, 10), ForceMode.Impulse);
