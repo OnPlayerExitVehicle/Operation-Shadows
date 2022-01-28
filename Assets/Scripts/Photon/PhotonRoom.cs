@@ -218,4 +218,15 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
     {
         PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PhotonNetworkPlayer"), transform.position, Quaternion.identity, 0);
     }
+
+    public void SetGameScene(int a) 
+    {
+        PV.RPC("RPCSetGameScene", RpcTarget.All, a);
+    }
+
+    [PunRPC]
+    private void RPCSetGameScene(int b)
+    {
+        MultiplayerSettings.multiplayerSettings.gameScene = b;
+    }
 }
