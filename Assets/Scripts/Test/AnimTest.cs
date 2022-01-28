@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using System.Threading.Tasks;
+using Photon.Pun;
 
 public class AnimTest : MonoBehaviour
 {
+    private PhotonView PV;
     public float speed;
     public bool crouch;
 
@@ -14,12 +16,13 @@ public class AnimTest : MonoBehaviour
 
     private void Start()
     {
+        PV = GetComponent<PhotonView>();
         playerMovement = GameManager.instance.playerMovement;
     }
 
     private void Update()
     {
-        if (!playerMovement)
+        if (!playerMovement && !PV.IsMine)
             return;
         if (Input.GetKey(KeyCode.LeftShift))
         {
