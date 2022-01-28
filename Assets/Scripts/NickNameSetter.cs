@@ -10,20 +10,13 @@ public class NickNameSetter : MonoBehaviour
     private PhotonView PV;
     void Start()
     {
-        if (!PV.IsMine)
-        {
-
-            PV = GetComponent<PhotonView>();
-            PlayerStats playerStats = GetComponentInParent<PlayerStats>();
-            playerStats.charName = this;
-            string isname = PhotonNetwork.NickName;
-            PV.RPC("RPC_SetName", RpcTarget.All, isname);
-                
-        }
-        else
-        {
+        PV = GetComponent<PhotonView>();
+        PlayerStats playerStats = GetComponentInParent<PlayerStats>();
+        playerStats.charName = this;
+        string isname = PhotonNetwork.NickName;
+        PV.RPC("RPC_SetName", RpcTarget.All, isname);
+        if (PV.IsMine && false)
             this.gameObject.SetActive(false);
-        }
     }
 
     [PunRPC]
