@@ -5,6 +5,7 @@ using Photon.Pun;
 
 public class GameManager : MonoBehaviour
 {
+    private PhotonView PV;
     public static GameManager instance;
     [HideInInspector]
     public GunSystem playerGunSystem;
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
         DontDestroyOnLoad(this.gameObject);
+        PV = GetComponent<PhotonView>();
     }
     private void Start()
     {
@@ -41,10 +43,16 @@ public class GameManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.F))
         {
-            MultiplayerSettings.multiplayerSettings.gameScene++;
+            PV.RPC("SetMPSettings", RpcTarget.All);
             PhotonNetwork.LoadLevel(MultiplayerSettings.multiplayerSettings.level2Scene);
         }
     }
 
+
+    [PunRPC]
+    private void SetMPSettings()
+    {
+        MultiplayerSettings.multiplayerSettings.gameScene++;
+    }
 
 }
