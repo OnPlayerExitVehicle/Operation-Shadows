@@ -13,4 +13,9 @@ public class AIRagdollPartsForHit : MonoBehaviour
     {
         aiScript.GiveMeDamage(damage);
     }
+
+    public void WarnAI(Transform trans)
+    {
+        aiScript.WarnAI(trans);
+    }
 }

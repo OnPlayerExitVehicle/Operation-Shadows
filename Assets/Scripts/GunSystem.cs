@@ -11,7 +11,7 @@ public class GunSystem : MonoBehaviour
     //private PhotonView pvPlayer;
     private AudioSource audioSource;
     private AudioSource shootAudioSource;
-    public GameObject player;
+    //public GameObject player; ????????????
     private GameObject tempBulletHoleObject;
     public GameObject bulletHolePrefab;
     public float knockBackObjectForce = 500f;
@@ -127,6 +127,7 @@ public class GunSystem : MonoBehaviour
             {
                 AIHealth aiHealth = rayHit.collider.GetComponent<AIHealth>();
                 aiHealth.GiveMeDamage(damage);
+                aiHealth.WarnAI(GameManager.instance.playerAvatar.transform);
                 PhotonNetwork.Instantiate(Path.Combine("SceneSpawn", "Blood"), rayHit.point, Quaternion.LookRotation(rayHit.normal), 0);
             }
             if
@@ -134,6 +135,7 @@ public class GunSystem : MonoBehaviour
             {
                 AIRagdollPartsForHit AIRagdollPartsForHit = rayHit.collider.GetComponent<AIRagdollPartsForHit>();
                 AIRagdollPartsForHit.NoticeHit(damage);
+                AIRagdollPartsForHit.WarnAI(GameManager.instance.playerAvatar.transform);
                 PhotonNetwork.Instantiate(Path.Combine("SceneSpawn", "Blood"), rayHit.point, Quaternion.LookRotation(rayHit.normal), 0);
             }
             if (rayHit.collider.CompareTag("Window"))

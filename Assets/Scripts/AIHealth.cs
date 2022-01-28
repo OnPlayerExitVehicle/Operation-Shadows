@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class AIHealth : MonoBehaviour
 {
+    [SerializeField] private AI ai;
     private PhotonView PV; 
     private int _health = 100;
     public int health { get { return _health; } set
@@ -17,11 +18,17 @@ public class AIHealth : MonoBehaviour
     private void Start()
     {
         PV = GetComponent<PhotonView>();
+        ai = GetComponent<AI>();
     }
 
     public void GiveMeDamage(int damage)
     {
         PV.RPC("RPC_GiveMeDamage", RpcTarget.All, damage);
+    }
+
+    public void WarnAI(Transform trans)
+    {
+        ai.OnGetHit(trans);
     }
     
 

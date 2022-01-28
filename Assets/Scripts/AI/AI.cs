@@ -26,6 +26,11 @@ public class AI : MonoBehaviour
     [SerializeField] private AIAnims aiAnim;
     [SerializeField] private float exitShootingPlusRadius;
 
+    private const float walkSpeed = 2;
+    private const float runSpeed = 6;
+    
+    private bool isShooted = false;
+
     [SerializeField] private float gunTolerance;
 
     public GameObject asdas;
@@ -97,6 +102,7 @@ public class AI : MonoBehaviour
         {
             navMeshAgent.SetDestination(target.position);
             state = NPCState.Chasing;
+            navMeshAgent.speed = runSpeed;
         }
     }
 
@@ -121,7 +127,7 @@ public class AI : MonoBehaviour
                 if(colliders[i].CompareTag("Player"))
                 {
                     RaycastHit hit;
-                    
+
                     if (Physics.Linecast(transform.position, colliders[i].transform.position, out hit))
                     {
                         asdas = hit.collider.gameObject;
@@ -132,6 +138,12 @@ public class AI : MonoBehaviour
                             return true;
                         }
 
+                    }
+                    else if(isShooted)
+                    {
+                        state = NPCState.Chasing;
+                        navMeshAgent.speed = runSpeed;
+                        return true;
                     }
                 }
             }
@@ -150,6 +162,7 @@ public class AI : MonoBehaviour
             else
             {
                 state = NPCState.Patrol;
+                navMeshAgent.speed = runSpeed;
             }
             
         }
@@ -168,11 +181,24 @@ public class AI : MonoBehaviour
             navMeshAgent.ResetPath();
             navMeshAgent.SetDestination(target.position);
             state = NPCState.Chasing;
+            navMeshAgent.speed = runSpeed;
         }
         else
         {
             aigun.MyInput(target.gameObject);
             this.transform.LookAt(target);
+        }
+    }
+
+    public void OnGetHit(Transform trans)
+    {
+        if(state == NPCState.Patrol || state == NPCState.Idle || state == NPCState.Chasing)
+        {
+            navMeshAgent.SetDestination(trans.position);
+            target = trans;
+            isShooted = true;
+            state = NPCState.Shooting;
+            shootRadius = Vector3.Magnitude(trans.position - transform.position);
         }
     }
 }
