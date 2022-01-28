@@ -15,7 +15,7 @@ public class NickNameSetter : MonoBehaviour
         playerStats.charName = this;
         string isname = PhotonNetwork.NickName;
         PV.RPC("RPC_SetName", RpcTarget.All, isname);
-        if (PV.IsMine && false)
+        if (PV.IsMine)
             this.gameObject.SetActive(false);
     }
 
