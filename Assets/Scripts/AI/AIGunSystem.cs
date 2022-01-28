@@ -162,8 +162,8 @@ public class AIGunSystem : MonoBehaviour
 
 
 
-        PV.RPC("AIRPC_Shooting", RpcTarget.All);
-
+        //PV.RPC("AIRPC_Shooting", RpcTarget.All);
+        AIRPC_Shooting();
 
         bulletsShot--;
 

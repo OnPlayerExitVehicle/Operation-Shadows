@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class GameManager : MonoBehaviour
 {
@@ -31,6 +32,14 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
         DontDestroyOnLoad(this.gameObject);
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.F) && PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.LoadLevel(MultiplayerSettings.multiplayerSettings.level2Scene);
+        }
     }
 
 

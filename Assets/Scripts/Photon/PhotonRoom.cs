@@ -189,6 +189,7 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
         PhotonNetwork.LoadLevel(MultiplayerSettings.multiplayerSettings.gameScene);
     }
 
+
     [PunRPC]
     private void RPC_Rounds(int rounds)
     {
@@ -213,7 +214,7 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
             GameSetup.GS.DisconnectPlayer();
     }
 
-    private void RPC_CreatePlayer()
+    public void RPC_CreatePlayer()
     {
         PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PhotonNetworkPlayer"), transform.position, Quaternion.identity, 0);
     }
