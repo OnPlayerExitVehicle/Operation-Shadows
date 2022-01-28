@@ -23,6 +23,7 @@ public class AIHealth : MonoBehaviour
     {
         PV.RPC("RPC_GiveMeDamage", RpcTarget.All, damage);
     }
+    
 
     private void CheckAmIDead()
     {

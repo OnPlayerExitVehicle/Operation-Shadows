@@ -102,6 +102,9 @@ MonoBehaviour:
   timeToExplode: 3
   bombRadius: 50
   bombForce: 500
+  killRadius: 5
+  bombDamage: 100
+  expEffect: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
 --- !u!114 &7237154856424927717
 MonoBehaviour:
   m_ObjectHideFlags: 0
