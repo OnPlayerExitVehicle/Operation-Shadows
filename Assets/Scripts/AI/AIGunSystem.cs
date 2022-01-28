@@ -113,13 +113,13 @@ public class AIGunSystem : MonoBehaviour
         {
             Debug.DrawRay(attackPoint.position, direction * range, Color.red);
             Debug.Log("aisilahi carpti" + rayHit.collider.name);
-
+            /*
             if (rayHit.collider.CompareTag("Player"))
             {
                 PlayerStats pStats = plyr.GetComponent<PlayerStats>();
                 pStats.DamageDealer(damage * debugDamageMultiplier, this.transform.position);
                 //this.GetComponent<PickUpController>().PV.GetComponent<Economy>().Para += damage * 2;
-                if (pStats.Health <= 0) //öldürünce yapýlacaklar
+                /*if (pStats.Health <= 0) //öldürünce yapýlacaklar
                 {
                     string myName = "AI";
                     string enemyName = pStats.PV.Owner.NickName;
@@ -131,13 +131,13 @@ public class AIGunSystem : MonoBehaviour
                 }
 
             }
-            if
-                (rayHit.collider.CompareTag("PlayerRagdollPartsForHit"))
+            */
+            if(rayHit.collider.CompareTag("PlayerRagdollPartsForHit"))
             {
                 RagdollPartsForHit RagdollPartsForHit = rayHit.collider.GetComponent<RagdollPartsForHit>();
                 RagdollPartsForHit.NoticeHit(damage);
             }
-            if (rayHit.collider.CompareTag("Pot"))
+            else if (rayHit.collider.CompareTag("Pot"))
             {
                 rayHit.collider.GetComponent<breakPot>().OnHitBreakPot(this.transform);
             }

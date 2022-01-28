@@ -11,7 +11,7 @@ public class GunSystem : MonoBehaviour
     //private PhotonView pvPlayer;
     private AudioSource audioSource;
     private AudioSource shootAudioSource;
-    //public GameObject player; ????????????
+    //public GameObject player; // ????????????
     private GameObject tempBulletHoleObject;
     public GameObject bulletHolePrefab;
     public float knockBackObjectForce = 500f;
@@ -103,10 +103,11 @@ public class GunSystem : MonoBehaviour
         //RayCast
         if (Physics.Raycast(fpsCam.transform.position, direction, out rayHit, range, whatIsShootable))
         {
-            Debug.Log(rayHit.collider.name);
-
+            
+            /*
             if (rayHit.collider.CompareTag("Player"))
             {
+                if (rayHit.collider.gameObject.Equals(gameObject)) return;
                 PlayerStats pStats = rayHit.collider.GetComponent<PlayerStats>();
                 pStats.DamageDealer(damage, this.transform.position);
                 //this.GetComponent<PickUpController>().PV.GetComponent<Economy>().Para += damage * 2;
@@ -121,16 +122,26 @@ public class GunSystem : MonoBehaviour
                     //SFXPlay(Random.Range(9, 11));
                 }
             }
-
-
-            if (rayHit.collider.CompareTag("AI"))
+            */
+            if(rayHit.collider.CompareTag("PlayerRagdollPartsForHit"))
+            {
+                if(rayHit.transform.IsChildOf(transform.root))
+                {
+                    readyToShoot = true;
+                    return;
+                }
+                Debug.Log("??");
+                RagdollPartsForHit RagdollPartsForHit = rayHit.collider.GetComponent<RagdollPartsForHit>();
+                RagdollPartsForHit.NoticeHit(damage);
+            }
+            else if (rayHit.collider.CompareTag("AI"))
             {
                 AIHealth aiHealth = rayHit.collider.GetComponent<AIHealth>();
                 aiHealth.GiveMeDamage(damage);
                 aiHealth.WarnAI(GameManager.instance.playerAvatar.transform);
                 PhotonNetwork.Instantiate(Path.Combine("SceneSpawn", "Blood"), rayHit.point, Quaternion.LookRotation(rayHit.normal), 0);
             }
-            if
+            else if
                 (rayHit.collider.CompareTag("AIRagdollPartsForHit"))
             {
                 AIRagdollPartsForHit AIRagdollPartsForHit = rayHit.collider.GetComponent<AIRagdollPartsForHit>();
@@ -138,19 +149,18 @@ public class GunSystem : MonoBehaviour
                 AIRagdollPartsForHit.WarnAI(GameManager.instance.playerAvatar.transform);
                 PhotonNetwork.Instantiate(Path.Combine("SceneSpawn", "Blood"), rayHit.point, Quaternion.LookRotation(rayHit.normal), 0);
             }
-            if (rayHit.collider.CompareTag("Window"))
+            else if (rayHit.collider.CompareTag("Window"))
             {
                 BreakableWindow breakableWindow = rayHit.collider.GetComponent<BreakableWindow>();
                 breakableWindow.breakWindow();
             }
-            if (rayHit.collider.CompareTag("Pot"))
+            else if (rayHit.collider.CompareTag("Pot"))
             {
                 GameObject pot = rayHit.transform.gameObject;
                 breakPot potScript = pot.GetComponent<breakPot>();
                 potScript.OnHitBreakPot(this.transform);
             }
-
-            if (rayHit.collider.GetComponent<Rigidbody>())
+            else if (rayHit.collider.GetComponent<Rigidbody>())
             {
                 if (!rayHit.collider.CompareTag("Gun"))
                 {
@@ -164,7 +174,7 @@ public class GunSystem : MonoBehaviour
 
 
             //Graphics
-            if (!rayHit.collider.CompareTag("AIRagdoll") && !rayHit.collider.CompareTag("AI") && !rayHit.collider.CompareTag("Window") && !rayHit.collider.CompareTag("Pot"))
+            if (!rayHit.collider.CompareTag("AIRagdoll") && !rayHit.collider.CompareTag("AI") && !rayHit.collider.CompareTag("Window") && !rayHit.collider.CompareTag("Pot") && !rayHit.collider.CompareTag("PlayerRagdollPartsForHit"))
             {
                 tempBulletHoleObject = PhotonNetwork.Instantiate(Path.Combine("SceneSpawn", bulletHolePrefab.name), rayHit.point, Quaternion.LookRotation(rayHit.normal), 0);
                 print(bulletHolePrefab.name);

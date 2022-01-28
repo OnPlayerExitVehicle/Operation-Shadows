@@ -131,7 +131,7 @@ public class AI : MonoBehaviour
                     if (Physics.Linecast(transform.position, colliders[i].transform.position, out hit))
                     {
                         asdas = hit.collider.gameObject;
-                        if (hit.collider.gameObject.CompareTag("Player") || hit.collider.gameObject.CompareTag("Pot"))
+                        if (hit.collider.gameObject.CompareTag("PlayerRagdollPartsForHit") || hit.collider.gameObject.CompareTag("Pot"))
                         {
                             float angle = Vector3.Angle(transform.position, hit.transform.position);
                             target = hit.collider.transform;
