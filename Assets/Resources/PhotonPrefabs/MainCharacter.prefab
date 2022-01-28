@@ -387,7 +387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bomba: {fileID: 155221711167277851, guid: ac216a953f89c704e9990f19fafbcb1e, type: 3}
-  bombForce: 20
+  bombForce: 15
   throwPoint: {fileID: 8045469835614969146}
 --- !u!1001 &4559139508237210269
 PrefabInstance:

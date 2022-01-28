@@ -8,8 +8,11 @@ public class Bomba : MonoBehaviour
     public float bombRadius;
     public float bombForce;
     private bool exploaded;
+
+    private AudioSource booom;
     private void Start()
     {
+        booom = GetComponent<AudioSource>();
         print("bomba triggered");
         if (!exploaded)
             Invoke("Explode", timeToExplode);
@@ -18,6 +21,11 @@ public class Bomba : MonoBehaviour
     private void Explode()
     {
         exploaded = true;
+        booom.Play();
+        for (int i = 0; i < this.transform.GetChild(0).childCount; i++)
+        {
+            this.transform.GetChild(0).GetChild(i).GetComponent<MeshRenderer>().enabled = false;
+        }
         Collider[] coll = Physics.OverlapSphere(transform.position, bombRadius);
 
         
@@ -47,7 +55,7 @@ public class Bomba : MonoBehaviour
                 }
             }
         }
-        Destroy(this.gameObject);
+        Destroy(this.gameObject, 10);
     }
 
     private bool CheckIfTwoMethodBreakable(Transform obj)
