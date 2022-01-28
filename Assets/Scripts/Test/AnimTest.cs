@@ -22,7 +22,7 @@ public class AnimTest : MonoBehaviour
 
     private void Update()
     {
-        if (!playerMovement && !PV.IsMine)
+        if (!PV.IsMine)
             return;
         if (Input.GetKey(KeyCode.LeftShift))
         {
