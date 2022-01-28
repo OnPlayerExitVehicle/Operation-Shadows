@@ -129,7 +129,8 @@ public class GunSystem : MonoBehaviour
                 aiHealth.GiveMeDamage(damage);
                 PhotonNetwork.Instantiate(Path.Combine("SceneSpawn", "Blood"), rayHit.point, Quaternion.LookRotation(rayHit.normal), 0);
             }
-            if (rayHit.collider.CompareTag("AIRagdollPartsForHit"))
+            if
+                (rayHit.collider.CompareTag("AIRagdollPartsForHit"))
             {
                 AIRagdollPartsForHit AIRagdollPartsForHit = rayHit.collider.GetComponent<AIRagdollPartsForHit>();
                 AIRagdollPartsForHit.NoticeHit(damage);

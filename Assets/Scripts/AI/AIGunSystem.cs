@@ -106,12 +106,13 @@ public class AIGunSystem : MonoBehaviour
 
         //Calculate Direction with Spread
         Vector3 direction = transform.forward;
-        direction = Quaternion.Euler(Random.Range(-tolerance, tolerance), Random.Range(-tolerance, tolerance), 0.0f) * direction;
+        //direction = Quaternion.Euler(Random.Range(-tolerance, tolerance), Random.Range(-tolerance, tolerance), 0.0f) * direction;
 
         //RayCast
-        if (Physics.Raycast(transform.position, direction, out rayHit, range, whatIsShootable))
+        if (Physics.Raycast(attackPoint.position, direction, out rayHit, range, whatIsShootable))
         {
-            //Debug.Log(rayHit.collider.name);
+            Debug.DrawRay(attackPoint.position, direction * range, Color.red);
+            Debug.Log("aisilahi carpti" + rayHit.collider.name);
 
             if (rayHit.collider.CompareTag("Player"))
             {
@@ -129,6 +130,12 @@ public class AIGunSystem : MonoBehaviour
                     //SFXPlay(Random.Range(9, 11));
                 }
 
+            }
+            if
+                (rayHit.collider.CompareTag("PlayerRagdollPartsForHit"))
+            {
+                RagdollPartsForHit RagdollPartsForHit = rayHit.collider.GetComponent<RagdollPartsForHit>();
+                RagdollPartsForHit.NoticeHit(damage);
             }
             if (rayHit.collider.CompareTag("Pot"))
             {

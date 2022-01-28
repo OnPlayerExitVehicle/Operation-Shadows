@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2344645604130506881}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: DustCover_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2344645604130506883}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: DustCover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2344645604130506885}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2344645604130506887}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2344645604130506889}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Bolt_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2344645604130506891}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Bolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2344645604130506893}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Button_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,7 +230,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2344645604130506895}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2344645604130506897}
   - component: {fileID: 2344645604136081837}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: M4A1_DustCover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -355,7 +355,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2344645604130506899}
   - component: {fileID: 2344645604136081839}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: M4A1_BoltFwdAsst
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -448,7 +448,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2344645604130506901}
   - component: {fileID: 2344645604136081825}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: M4A1_Grip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -541,7 +541,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2344645604130506903}
   - component: {fileID: 2344645604136081827}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: M4A1_FrontSight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -633,7 +633,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2344645604130506905}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: M4A1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -665,7 +665,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2344645604130506907}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Handle_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -696,7 +696,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2344645604130506909}
   - component: {fileID: 2344645604136081833}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: M4A1_Bolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -789,7 +789,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2344645604130506911}
   - component: {fileID: 2344645604136081835}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: M4A1_Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -882,7 +882,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2344645604130506913}
   - component: {fileID: 2344645604136081853}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: M4A1_RearSight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -975,7 +975,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2344645604130506915}
   - component: {fileID: 2344645604136081855}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: M4A1_MagCatch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1074,7 +1074,7 @@ GameObject:
   - component: {fileID: 9207016392675013933}
   - component: {fileID: 8579865866813833172}
   - component: {fileID: 8198122438795771749}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: m4a4_ai
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1150,7 +1150,6 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 8429684308043920467}
-  - {fileID: 0}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -1215,7 +1214,7 @@ MonoBehaviour:
   attackPoint: {fileID: 4612304436513710692}
   whatIsShootable:
     serializedVersion: 2
-    m_Bits: 257
+    m_Bits: 769
   bulletHoleGraphic: {fileID: 0}
   muzzleFlash: {fileID: 8259960136655797742}
   camShake: {fileID: 0}
@@ -1351,7 +1350,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2344645604130506919}
   - component: {fileID: 2344645604136081843}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: M4A1_Receiver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1444,7 +1443,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2344645604130506921}
   - component: {fileID: 2344645604136081829}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: M4A1_Handguard_m
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1537,7 +1536,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2344645604130506923}
   - component: {fileID: 2344645604136081831}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: M4A1_Handguard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1630,7 +1629,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2344645604130506925}
   - component: {fileID: 2344645604136081849}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: M4A1_Magazine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1723,7 +1722,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2344645604130506927}
   - component: {fileID: 2344645604136081851}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: M4A1_Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1815,7 +1814,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2344645604130506929}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Selector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1846,7 +1845,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2344645604130506931}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MagCatch_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1876,7 +1875,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2344645604130506933}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Stock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1907,7 +1906,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2344645604130506935}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Selector_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1937,7 +1936,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2344645604130506937}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Magazine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1969,7 +1968,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2344645604130506939}
   - component: {fileID: 2344645604136081841}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: M4A1_Stock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2061,7 +2060,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2344645604130506941}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MagCatch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2092,7 +2091,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2344645604130506943}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Magazine_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2122,7 +2121,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2344645604130506953}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2153,7 +2152,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2344645604130506955}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Stock_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2183,7 +2182,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2344645604130506959}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Trigger_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}

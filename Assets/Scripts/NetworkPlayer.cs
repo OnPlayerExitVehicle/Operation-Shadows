@@ -99,7 +99,7 @@ public class NetworkPlayer : MonoBehaviour
         cm.Follow = avatar.transform;
         cm.LookAt = playerStats.lookAtObject;
 
-        avatar.layer = 9;
+        //avatar.layer = 9;
         playerStats.networkPlayer = this;
         if(PhotonNetwork.IsMasterClient) Debug.Log("Owner");
         avatarSpawned = true;
