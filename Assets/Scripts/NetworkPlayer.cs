@@ -59,7 +59,10 @@ public class NetworkPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            SpawnChar();
+        }
     }
 
     public void SpawnChar() // Sets On SpawnCharacter

@@ -105,8 +105,8 @@ public class AIGunSystem : MonoBehaviour
         float y = Random.Range(-spread, spread);*/
 
         //Calculate Direction with Spread
-        Vector3 direction = transform.forward;
-        //direction = Quaternion.Euler(Random.Range(-tolerance, tolerance), Random.Range(-tolerance, tolerance), 0.0f) * direction;
+        Vector3 direction = (plyr.transform.position - transform.position).normalized;
+        direction = Quaternion.Euler(Random.Range(-tolerance, tolerance), Random.Range(-tolerance, tolerance), 0.0f) * direction;
 
         //RayCast
         if (Physics.Raycast(attackPoint.position, direction, out rayHit, range, whatIsShootable))

@@ -33,11 +33,15 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
     }
-
+    private void Start()
+    {
+        
+    }
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.F) && PhotonNetwork.IsMasterClient)
         {
+            MultiplayerSettings.multiplayerSettings.gameScene++;
             PhotonNetwork.LoadLevel(MultiplayerSettings.multiplayerSettings.level2Scene);
         }
     }

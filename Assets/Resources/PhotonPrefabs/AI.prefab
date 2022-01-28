@@ -107,8 +107,8 @@ MonoBehaviour:
   animator: {fileID: 0}
   state: 0
   viewAngle: 0
-  awarenessRadius: 6
-  shootRadius: 3
+  awarenessRadius: 15
+  shootRadius: 10
   target: {fileID: 0}
   positions:
   - {x: -14, y: 0.57, z: 14}
@@ -1408,6 +1408,18 @@ PrefabInstance:
     - target: {fileID: 8151020995152267459, guid: 884b835594549b141a32f85b67761a06, type: 3}
       propertyPath: ObservedComponents.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8579865866813833172, guid: 884b835594549b141a32f85b67761a06, type: 3}
+      propertyPath: m_Center.z
+      value: 0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 9207016392675013933, guid: 884b835594549b141a32f85b67761a06, type: 3}
+      propertyPath: tolerance
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9207016392675013933, guid: 884b835594549b141a32f85b67761a06, type: 3}
+      propertyPath: timeBetweenShooting
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 884b835594549b141a32f85b67761a06, type: 3}
