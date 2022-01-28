@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F))
+        if(Input.GetKeyDown(KeyCode.O))
         {
             PhotonRoom.room.SetGameScene(2);
             PhotonNetwork.LoadLevel(MultiplayerSettings.multiplayerSettings.level2Scene);
