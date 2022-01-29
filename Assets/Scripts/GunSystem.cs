@@ -174,7 +174,7 @@ public class GunSystem : MonoBehaviour
 
 
             //Graphics
-            if (!rayHit.collider.CompareTag("AIRagdoll") && !rayHit.collider.CompareTag("AI") && !rayHit.collider.CompareTag("Window") && !rayHit.collider.CompareTag("Pot") && !rayHit.collider.CompareTag("PlayerRagdollPartsForHit"))
+            if (!rayHit.collider.CompareTag("AIRagdollPartsForHit") && !rayHit.collider.CompareTag("AI") && !rayHit.collider.CompareTag("Window") && !rayHit.collider.CompareTag("Pot") && !rayHit.collider.CompareTag("PlayerRagdollPartsForHit"))
             {
                 tempBulletHoleObject = PhotonNetwork.Instantiate(Path.Combine("SceneSpawn", bulletHolePrefab.name), rayHit.point, Quaternion.LookRotation(rayHit.normal), 0);
                 print(bulletHolePrefab.name);
