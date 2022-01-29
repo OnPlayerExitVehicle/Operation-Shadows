@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb105d2e07cac1941a94ec10f526c271, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startPatrolling: 0
   navMeshAgent: {fileID: 0}
   animator: {fileID: 0}
   state: 0
@@ -135,6 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75750251573303448bff7cab1b692a70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ai: {fileID: 0}
 --- !u!136 &6309422258535897404
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1412,6 +1414,10 @@ PrefabInstance:
     - target: {fileID: 8579865866813833172, guid: 884b835594549b141a32f85b67761a06, type: 3}
       propertyPath: m_Center.z
       value: 0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 9207016392675013933, guid: 884b835594549b141a32f85b67761a06, type: 3}
+      propertyPath: damage
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9207016392675013933, guid: 884b835594549b141a32f85b67761a06, type: 3}
       propertyPath: tolerance

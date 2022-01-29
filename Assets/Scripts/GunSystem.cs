@@ -15,7 +15,7 @@ public class GunSystem : MonoBehaviour
     private GameObject tempBulletHoleObject;
     public GameObject bulletHolePrefab;
     public float knockBackObjectForce = 500f;
-    private bool debug = true; // sunu silin amk
+    private bool debug = false; // sunu silin amk
 
     //Gun stats
     public int damage;

@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour {
         if (PV.IsMine)
         {
             GameManager.instance.playerMovement = this;
-            InteractionManager.instance.playerMovement = this; // ?
+          
         }
         
     }

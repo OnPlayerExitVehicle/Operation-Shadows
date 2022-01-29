@@ -1924,6 +1924,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 4559139508481244881}
+    - target: {fileID: 4045670037394672425, guid: 1ed33a6bbcb35f04681755ad741c37e3, type: 3}
+      propertyPath: totalAmmo
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 4045670037394672425, guid: 1ed33a6bbcb35f04681755ad741c37e3, type: 3}
+      propertyPath: magazineSize
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 4229400151019562228, guid: 1ed33a6bbcb35f04681755ad741c37e3, type: 3}
       propertyPath: m_RootOrder
       value: 6
