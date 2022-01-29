@@ -8,11 +8,11 @@ public class Interact : MonoBehaviour
     private Transform camera;
     private bool foundInteract;
     private Outline? lastOutline;
-    private bool isLooking = false;
+    //private bool isLooking = false;
 
-    [SerializeField] private CinemachineFreeLook cmFL;
+    //[SerializeField] private CinemachineFreeLook cmFL;
 
-    [SerializeField] private float maxDistance;
+    private float maxDistance = 15;
 
     private Transform backupLookAt;
     private Transform backupFollow;
@@ -20,11 +20,29 @@ public class Interact : MonoBehaviour
     private void Awake() // START'a tasinabilir
     {
         camera = Camera.main.transform;
-        cmFL = InteractionManager.instance.cmFL;
+        //cmFL = InteractionManager.instance.cmFL;
     }
     private void Update()
     {
         RaycastHit hit;
+        if(Physics.Raycast(camera.position, camera.forward, out hit, maxDistance) && hit.transform.CompareTag("Interaction"))
+        {
+            lastOutline = hit.transform.GetComponent<Outline>();
+            lastOutline.enabled = true;
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+                GameManager.instance.NextLevel();
+            }
+        }
+        else
+        {
+            if (lastOutline)
+            {
+                lastOutline.enabled = false;
+                lastOutline = null;
+            }
+        }
+        /*
         if(isLooking)
         {
             
@@ -42,11 +60,11 @@ public class Interact : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.E))
             {
                 isLooking = true;
-                BackupCinemachineLook();
-                cmFL.LookAt = lastOutline.gameObject.transform;
-                cmFL.Follow = lastOutline.gameObject.transform;
-                CinemachineCore.GetInputAxis = FakeInputAxis;
-                InteractionManager.instance.playerMovement.canMove = false;
+                //BackupCinemachineLook();
+                //cmFL.LookAt = lastOutline.gameObject.transform;
+                //cmFL.Follow = lastOutline.gameObject.transform;
+                //CinemachineCore.GetInputAxis = FakeInputAxis;
+                //InteractionManager.instance.playerMovement.canMove = false;
             }
         }
         else
@@ -56,19 +74,20 @@ public class Interact : MonoBehaviour
                 lastOutline.enabled = false;
             }
         }
+        */
     }
-
+    /*
     private void BackupCinemachineLook()
     {
-        backupFollow = cmFL.Follow;
-        backupLookAt = cmFL.LookAt;
+        //backupFollow = cmFL.Follow;
+        //backupLookAt = cmFL.LookAt;
         backupDel = CinemachineCore.GetInputAxis;
     }
 
     private void RestoreCinemachineLook()
     {
-        cmFL.Follow = backupFollow;
-        cmFL.LookAt = backupLookAt;
+        //cmFL.Follow = backupFollow;
+        //cmFL.LookAt = backupLookAt;
         CinemachineCore.GetInputAxis = backupDel;
         InteractionManager.instance.playerMovement.canMove = true;
     }
@@ -77,4 +96,5 @@ public class Interact : MonoBehaviour
     {
         return 0;
     }
+    */
 }

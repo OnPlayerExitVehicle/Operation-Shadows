@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     {
         
     }
+    /*
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.O))
@@ -44,6 +45,12 @@ public class GameManager : MonoBehaviour
             PhotonRoom.room.SetGameScene(2);
             PhotonNetwork.LoadLevel(MultiplayerSettings.multiplayerSettings.level2Scene);
         }
+    }
+    */
+    public void NextLevel()
+    {
+        PhotonRoom.room.SetGameScene(2);
+        PhotonNetwork.LoadLevel(MultiplayerSettings.multiplayerSettings.level2Scene);
     }
 
 
