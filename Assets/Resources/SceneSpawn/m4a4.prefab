@@ -719,13 +719,13 @@ MonoBehaviour:
   bulletHolePrefab: {fileID: 1000010844420130, guid: 4edabb1c0dde62743b137378c7d22980, type: 3}
   knockBackObjectForce: 1000
   damage: 20
-  totalAmmo: 90
+  totalAmmo: 400
   timeBetweenShooting: 0.09
   spread: 0.02
   range: 300
   reloadTime: 2.583
   timeBetweenShots: 0
-  magazineSize: 30
+  magazineSize: 40
   bulletsPerTap: 1
   allowButtonHold: 1
   fpsCam: {fileID: 0}
